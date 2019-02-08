@@ -1,0 +1,31 @@
+{% block content %}
+<div>
+    <h3>{{ category.name }}</h3>
+    <a href="{% url 'post_new' %}"> New </a>
+    <a href="{% url 'main' %}">main</a>
+    <table>
+        <thead>
+            <tr>
+                <th>category</th>
+                <th>title</th>
+                <th>writer</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in category.post_set.all %}
+            <tr>
+                <td>{{ post.category }}</td>
+                <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }}</a></td>
+                <td>user</td>
+                {% comment %} 유저이름 추가하기 {% endcomment %}
+                <td>{{ post.created_at }}</td>
+                {% comment %} 올린시간 추가하기 {% endcomment %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock content %}

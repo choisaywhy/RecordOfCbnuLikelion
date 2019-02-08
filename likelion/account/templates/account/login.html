@@ -1,0 +1,18 @@
+{% block contents %}
+<div>
+<h3>login</h3>
+
+<form method="POST" action="{%url 'login'%}">
+    {% csrf_token %}
+    Username : 
+    <br>
+    <input name="Username" type="text" value="">
+    <br>
+    Password :
+    <br>
+    <input name="Password" type="password" value=""> 
+    <br>
+    <input type="submit" value="login">
+</form>
+</div>
+{% endblock %}

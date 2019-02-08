@@ -1,0 +1,37 @@
+<h1>메인페이지</h1>
+{% block content %}
+<div>
+{% for category in category_all %}
+    <h3><a href="{% url 'board' category.id %}">{{ category.name }}</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>writer</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in category.post_set.all %}
+            <tr>
+                <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
+                <td>user</td>
+                {% comment %} 유저이름 추가하기 {% endcomment %}
+                <td>{{ post.created_at }}</td>
+            </tr>
+        {% empty %}
+        <p>게시판이 비었습니다.</p>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+{% endfor %}
+
+</div>
+
+{% endblock content %}
+
+{% comment %} 1. 나타나는 게시글 수 제한 (멋사강의 참고)
+2. 각 게시판으로 넘어가는 기능 추가
+3. nav추가
+4. user 정보 조회기능 추가 {% endcomment %}
