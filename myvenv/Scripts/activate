@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\세화\Desktop\likelion\myvenv"
+VIRTUAL_ENV="C:\Users\박태미\Documents\GitHub\cbnulikelion\myvenv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

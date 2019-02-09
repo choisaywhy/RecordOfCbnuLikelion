@@ -1,0 +1,158 @@
+body {
+    /* background-image: url('lion.jpg'); */
+    min-height: 100%;
+    background : linear-gradient(to right, rgba(0, 0, 0, .5), rgba(255, 255, 255, .5)), url('lion.jpg'); 
+    background-size : cover;
+    padding-left: 30px;
+    color : white;
+    
+    
+    font-family: Helvetica, sans-serif; font-size: 18px; line-height: 24px;
+    
+}
+
+.logo_img {
+    width : 100px;
+    height : 160px;
+
+}
+
+
+/*메뉴*/
+
+    
+nav {
+
+margin: 10px auto; 
+
+text-align: center;
+opacity: 0.75;
+
+}
+
+    
+    
+
+
+
+
+nav ul ul {
+
+display: none;
+
+}
+
+
+
+nav ul li:hover > ul {
+
+display: block;
+
+}
+
+
+
+nav ul {
+
+background: #efefef; 
+
+box-shadow: 0px 0px 9px rgba(0,0,0,0.35);
+
+padding: 0 30px;
+
+list-style: none;
+
+position: relative;
+
+display: inline-table;
+
+}
+
+nav ul:after {
+
+content: ""; clear: both; display: block;
+
+}
+
+
+
+nav ul li {
+
+float: left;
+
+
+
+}
+
+nav ul li:hover {
+
+background: #4b545f;
+
+
+}
+
+nav ul li:hover a {
+
+color: #fff;
+
+}
+
+
+nav ul li a {
+
+display: block; padding: 25px 40px;
+
+color: #757575; text-decoration: none;
+
+
+
+}
+
+<!--  -->
+
+nav ul ul {
+
+    background: #5f6975; border-radius: 0px; padding: 0;
+
+position: absolute; top:100%;
+
+}
+
+nav ul ul li {
+
+float: none; 
+
+
+}
+
+nav ul ul li a {
+
+color: #fff;
+
+}
+
+nav ul ul li a:hover {
+
+background: #000;
+
+}
+
+nav ul ul ul {
+
+position: absolute; left: 100%; top:0;
+
+}
+
+/*메뉴 끝*/
+
+.mini_background{
+    padding: 100px;
+    background-color: rgba( 0, 0, 0, 0.5 );
+}
+
+footer {
+    color : black;
+    text-align: center;
+    background-color: rgba(133, 18, 61, 0.6);
+   
+}

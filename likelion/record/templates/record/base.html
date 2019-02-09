@@ -1,0 +1,95 @@
+{% load static %}
+{% load staticfiles %}
+<html>
+    <haed>
+             
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+       <!-- 부가적인 테마 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    </haed>
+    <body class="container-fluid">
+       
+        {% comment %} <img src="{% static 'logo.png' %}" alt=""/> {% endcomment %}
+        
+        <h3 class="logo"><img class="logo_img" src="{% static 'logo.jpg' %}">충북대학교 x 멋쟁이사자처럼</h3>
+        <div class="container">
+       
+           
+       
+            {% comment %} 로그인/ 비로그인 시 뜨는 거 다르게 만든 것 수정중!
+             {% if user.is_authenticated %} <p>Welcome, {{ user.username }}. Thanks for logging in.</p> 
+            {% else %} 
+            <p>Welcome, new user. Please log in.</p> 
+            {% endif %} {% endcomment %}
+
+        {% comment %} 메뉴============================ {% endcomment %}
+        <nav>
+
+            <ul>
+
+            <li><a href="#">Home</a></li>
+
+            <li><a href="#">Calendar</a>
+
+            <ul>
+
+            <li><a href="#">calendar.1</a></li>
+
+            <li><a href="#">2</a></li>
+
+            <li><a href="#">3</a>
+
+
+            </li>
+
+            </ul>
+
+            </li>
+
+            <li><a href="#">Board</a>
+
+            <ul>
+
+            <li><a href="#">Board.a</a></li>
+
+            <li><a href="#">b</a></li>
+
+            <li><a href="#">c</a></li>
+
+            </ul>
+
+            </li>
+
+            <li><a href="#">Member</a></li>
+
+            </ul>
+
+            </nav>
+        
+        {% comment %} ============================== {% endcomment %}
+        <br>
+        <div class="mini_background">
+     
+            {% block content%}
+            {% endblock %}
+        </div>    
+        </div>
+        <br>
+        <br>
+    </body>
+
+    <footer>
+            MAEK : CSH / SEJ / PTM<br>
+            DESIGN : EJY
+            {% comment %} 여기 왜 누르면 3번째 글로 들어가지지? {% endcomment %}
+    </footer>
+</html>
