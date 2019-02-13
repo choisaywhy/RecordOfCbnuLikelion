@@ -22,4 +22,5 @@ urlpatterns = [
     path('record/',include('record.urls'), name="record"),
     path('main/', record.views.main, name="main"),
     path('account/',include('account.urls')),
+    path('schedule/', include('schedule.urls')),
 ]

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'record.apps.RecordConfig',
     'account.apps.AccountConfig',
+    'schedule.apps.ScheduleConfig',
 ]
 
 MIDDLEWARE = [
