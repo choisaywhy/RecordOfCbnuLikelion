@@ -1,8 +1,174 @@
-{% extends 'record/base.html' %}
+{% load static %}
+{% load staticfiles %}
+<html>
+    <haed>
+             
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-{% block content %}
+       <!-- 부가적인 테마 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-schedule
-this
+        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </haed>
+    <body class="container-fluid">
+       
+       
+        <h3 class="logo"><img class="logo_img" src="{% static 'logo.jpg' %}">          충북대학교 x 멋쟁이사자처럼</h3>
+        <hr/>
+        
+       
+           
+       
+            {% comment %} 로그인/ 비로그인 시 뜨는 거 다르게 만든 것 수정중!
+             {% if user.is_authenticated %} <p>Welcome, {{ user.username }}. Thanks for logging in.</p> 
+            {% else %} 
+            <p>Welcome, new user. Please log in.</p> 
+            {% endif %} {% endcomment %}
 
-{% endblock %}
+                    <nav>
+
+            <ul>
+
+            <li><a href="#">Home</a></li>
+
+            <li><a href="#">Calendar</a>
+
+            <ul>
+
+            <li><a href="{% url 'schedule_all' %}">All</a></li>
+
+
+            <li><a href="{% url 'schedule_this' %}">This Month</a></li>
+            
+
+            </li>
+
+            </ul>
+
+            </li>
+
+            <li><a href="#">Board</a>
+
+            <ul>
+
+            <li><a href="#">Board.a</a></li>
+
+            <li><a href="#">b</a></li>
+
+            <li><a href="#">c</a></li>
+
+            </ul>
+
+            </li>
+
+            <li><a href="#">Member</a></li>
+
+            </ul>
+
+            </nav>
+        {% comment %} ================calendar=========== {% endcomment %}
+
+            <div class="container">
+            <div class="calendar_back">
+                <div class="month"> 
+                <ul>
+                    <li class="prev"><a>&#10094;</a></li>
+                    <li class="next"><a>&#10095;</a></li>
+                    <li> March<br><span style="font-size:18px">2019</span></li>
+                </ul>
+                </div>
+
+                <ul class="weekdays">
+                <li>Mo</li>
+                <li>Tu</li>
+                <li>We</li>
+                <li>Th</li>
+                <li>Fr</li>
+                <li>Sa</li>
+                <li>Su</li>
+                </ul>
+
+                <ul class="days">
+                <li> </li>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+                <li>1</li>
+                <li>2</li>
+                <li>3 </li>
+                <br>
+                <br>
+                <br>
+                <br>
+                <li><span class="active">4</span></li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li><span class="active">10</span></li>
+                <li>4일 일정처럼 보이지만 11일 위에 추가한 거임<br><br><br>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <br>
+                <br>
+                <br>
+                <br>
+                <li>18</li>
+                <li>19</li>
+                <li>20</li>
+                <li>21</li>
+                <li>22</li>
+                <li>23</li>
+                <li>24</li>
+                <br>
+                <br>
+                <br>
+                <br>
+                <li>25</li>
+                <li>26</li>
+                <li>27</li>
+                <li>28</li>
+                <li>29</li>
+                <li>30</li>
+                <li>31</li>
+                <br>
+                <br>
+                <br>
+                <br>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+                <li> </li>
+            
+                </ul>
+            </div>
+            </div>
+        </div>    
+       
+        <br>
+        <br>
+        <br>
+
+        
+    </body>
+
+    <footer>
+        MAKE
+    
+    </footer>
+</html>
+
