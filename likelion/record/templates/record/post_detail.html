@@ -1,4 +1,4 @@
-<html>
+{% extends 'record/base.html' %}
 {% block content %}
 <div>
     
@@ -22,6 +22,14 @@
         </p>
          <a href="{% url 'comment_delete' post.id comment.id  %}">Delete</a>
     </div>
+    {% for recomment in comment.recomment_set.all%}
+        <div>
+            <p>
+                {{recomment.text}}
+            </p>
+            <a href="{% url 'recomment_delete' post.id comment.id recomment.id %}">Delete</a>
+        </div>
+    {% endfor %}
 {% empty %}
     <p>Comment here</p>
 {% endfor %}
@@ -34,5 +42,12 @@
     <input type='submit' value='Save'>
 </form>
 
+{% comment %} <form action='{% url 'recomment_new' post.id comment.id %}' method = 'post'>
+    {% csrf_token %}
+    <table margin = >
+        {{ form.as_table }}
+    </table>
+    <input type='submit' value='Save'>
+</form> {% endcomment %}
+
 {% endblock %}
-</html>

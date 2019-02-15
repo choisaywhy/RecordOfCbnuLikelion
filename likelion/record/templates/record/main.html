@@ -4,7 +4,7 @@
 <div>
 {% for category in category_all %}
     <h3><a href="{% url 'board' category.id %}">{{ category.name }}</h3>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>title</th>
@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for post in category.post_set.all %}
+        {% for post in posts %}
             <tr>
                 <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></td>
                 <td>user</td>

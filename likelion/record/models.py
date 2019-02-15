@@ -19,7 +19,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
-
     def get_absolute_url(self):
         return reverse("post_detail", kwargs={"post_id": self.id})
 
@@ -27,6 +26,15 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE,)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.text
+
+
+class Recomment(models.Model):
+    comment = models.ForeignKey(Comment,on_delete=models.CASCADE,)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     

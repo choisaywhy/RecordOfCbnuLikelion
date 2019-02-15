@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, Category
-from .forms import PostForm, CommentForm
+from .models import Post, Comment, Category, Recomment
+from .forms import PostForm, CommentForm, RecommentForm
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -20,11 +21,29 @@ def post_detail(request, post_id):
     form = CommentForm()
     return render(request, 'record/post_detail.html',{'post':post,'form':form})
 
+def main(request) :
+    post_all = Post.objects.all().order_by('-created_at')
+    category_all = Category.objects.all()
+    page_numbers_range = 5
+    paginator = Paginator(post_all,page_numbers_range)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    return render(request, 'record/main.html',{'post_all':post_all,'category_all':category_all,'posts':posts})
 
 def board(request, category_id):
     category = get_object_or_404(Category, id=category_id)
-    post_all = Post.objects.all()
-    return render(request, 'record/board.html',{'post_all':post_all, 'category':category})
+    post_all = Post.objects.all().order_by('-created_at')
+    page_numbers_range = 5
+    # 한 페이지에 나올 게시글 수
+    paginator = Paginator(post_all,page_numbers_range)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    current_page = int(page) if page else 1
+    start_index = int((current_page - 1) / page_numbers_range) * page_numbers_range
+    end_index = start_index + page_numbers_range
+    page_range = paginator.page_range[start_index:end_index]
+
+    return render(request, 'record/board.html',{'post_all':post_all, 'category':category, 'posts':posts, 'page_range':page_range, 'paginator':paginator })
 
 def post_edit(request, post_id):
     post = get_object_or_404(Post, id=post_id)
@@ -60,8 +79,21 @@ def comment_delete(request, post_id, comment_id):
     comment.delete()
     return redirect(comment.post)
 
-def main(request) :
-    post_all = Post.objects.all()
-    category_all = Category.objects.all()
-    return render(request, 'record/main.html',{'post_all':post_all,'category_all':category_all})
+
+def recomment_new(request, post_id, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    form = RecommentForm(request.COMMENT)
+    if form.is_valid():
+        recomment = form.save(commit=False)
+        recomment.comment = comment
+        recomment.comment.post = post
+        recomment.save()
+    return redirect(post)
+
+def recomment_delete(request, post_id, comment_id, recomment_id):
+    recomment = get_object_or_404(Recomment, id=recomment_id)
+    recomment.delete()
+    return redirect(recomment.comment.post)
+
+
 
