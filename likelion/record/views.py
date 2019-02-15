@@ -65,3 +65,5 @@ def main(request) :
     category_all = Category.objects.all()
     return render(request, 'record/main.html',{'post_all':post_all,'category_all':category_all})
 
+def member(request):
+    return render(request, 'record/member.html')

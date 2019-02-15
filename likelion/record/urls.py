@@ -10,5 +10,6 @@ urlpatterns = [
     url(r'^(?P<post_id>\d+)/comment/$', views.comment_new, name="comment_new"),
     url(r'^(?P<post_id>\d+)/comment/(?P<comment_id>\d+)/delete/$', views.comment_delete, name="comment_delete"),
     url(r'^board/(?P<category_id>\d+)$', views.board, name="board"),
+    url(r'^member/$', views.member, name="member"),
  
 ]
