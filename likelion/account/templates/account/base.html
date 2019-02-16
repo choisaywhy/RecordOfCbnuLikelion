@@ -1,0 +1,78 @@
+{% load static %}
+{% load staticfiles %}
+<html>
+    <haed>
+             
+        <!-- 합쳐지고 최소화된 최신 CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+       <!-- 부가적인 테마 -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <style>
+        section{
+            height: 95%;
+            display: flex;
+            width: 100%;
+        }
+     
+        nav{
+            height: 95%;
+            width: 80%;
+            border-right: 1px solid rosybrown;
+            margin: 7px;
+        }
+        article{
+            height: 900px;
+            width: 20%;
+         }
+         footer{
+         background-color: rosybrown;
+         height: 5%;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         }
+         img{
+             height: 600px;
+             width: 1000px;
+             margin: 30px 50px;
+         }
+         h1{
+             margin:20px 10px;
+             font-weight: bold;
+             font-family: Georgia, 'Times New Roman', Times, serif;
+         }
+         p{
+             font-family: 'Times New Roman', Times, serif;
+         }
+         li{
+             font-family: 'Times New Roman', Times, serif;
+         }
+     
+     </style>
+     </head>
+
+     <body>
+         <section>
+             <nav>
+                <h3 class="logo"><img class="logo_img" src="{% static 'logo.jpg' %}">          충북대학교 x 멋쟁이사자처럼</h3>
+             </nav>
+             <article>
+                    {% block contents %}
+                    {% endblock %}
+             </article>
+         </section>
+         <footer>
+             <p>
+                 COPYRIGHT : CBNULIKELION
+             </p>
+         </footer>
+     </body>
+
+</html>

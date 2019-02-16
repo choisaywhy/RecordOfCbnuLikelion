@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Comment, Category
+from .models import Post, Comment, Category,Recomment
 # Register your models here.
 
 @admin.register(Category)
@@ -19,4 +19,9 @@ class PostAdmin(admin.ModelAdmin):
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
     list_display = ['post_id','post','text','created_at','id',]
+    search_fields = ['text',]
+
+@admin.register(Recomment)
+class RecommentAdmin(admin.ModelAdmin):
+    list_display = ['comment_id','text','created_at','id',]
     search_fields = ['text',]
