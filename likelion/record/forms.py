@@ -3,7 +3,6 @@ from .models import Post, Comment, Recomment
 
 class PostForm(forms.ModelForm):
     
-
     class Meta:
         model = Post
         fields = ('title', 'file', 'text','category') 
@@ -20,7 +19,6 @@ class CommentForm(forms.ModelForm):
         fields = ('text',)
 
 class RecommentForm(forms.ModelForm):
-
 
     class Meta:
         model = Recomment

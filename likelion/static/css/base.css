@@ -14,9 +14,27 @@ body {
     height : 70px;
 }
 
+.lion_icon {
+    width : 60px;
+    height : 60px;
+    position: absolute;
+    right: 30px;
+    top :25px;
+}
+
+.me {
+    position: absolute;
+    right: 45px;
+    top : 75px;
+    color : black;
+}
+
+
 .logo {
     font-size : 20px;
 }
+
+
 
 /*메뉴*/
 
@@ -112,7 +130,7 @@ color: #757575; text-decoration: none;
 
 nav ul ul {
 
-    background: #5f6975; border-radius: 0px; padding: 0;
+background: #5f6975; border-radius: 0px; padding: 0;
 
 position: absolute; top:100%;
 
@@ -160,3 +178,17 @@ footer {
 
 
 
+
+.member {
+    position: relative; 
+    z-index: 1;
+    
+  }
+  
+.calendar_menu { 
+    position: relative; 
+    z-index: 2;
+  }
+
+
+  /* =============================user== */

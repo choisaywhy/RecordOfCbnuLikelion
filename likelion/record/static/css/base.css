@@ -190,4 +190,9 @@ footer {
     z-index: 2;
   }
 
-  /* =============================user== */
+
+.logout {
+    position: absolute;
+    right: 100px;
+    top : 65px;
+}

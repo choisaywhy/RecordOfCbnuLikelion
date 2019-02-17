@@ -11,7 +11,7 @@ body {font-family: Verdana, sans-serif;}
 .month {
   padding: 70px 25px;
   width: 100%;
-  background: rgb(252, 176, 64);
+  background: rgb(133, 18, 61);
 
   text-align: center;
 }
@@ -75,6 +75,20 @@ body {font-family: Verdana, sans-serif;}
 /* Highlight the "current" day */
 .days li .active {
   padding: 5px;
-  background: #1abc9c;
+  background:  rgb(133, 18, 61);
   color: white !important
+}
+
+.nav, .container {
+  float:auto;
+}
+
+.calendar_menu {
+  position: relative; 
+  z-index: 2;
+}
+
+.container { 
+  position: relative; 
+  z-index: 1;
 }
