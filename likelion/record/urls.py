@@ -15,9 +15,6 @@ urlpatterns = [
     url(r'^(?P<post_id>\d+)/comment/(?P<comment_id>\d+)/recomment$', views.recomment_new, name="recomment_new"),
     url(r'^(?P<post_id>\d+)/comment/(?P<comment_id>\d+)/recomment/(?P<recomment_id>\d+)/delete/$', views.recomment_delete, name="recomment_delete"),
     url(r'^board/(?P<category_id>\d+)$', views.board, name="board"),
-    url(r'board/free/$', views.board_free, name="board_free"),
-    url(r'board/notice/$', views.board_notice, name="board_notice"),
-    url(r'board/project/$',views.board_project, name="board_project"),
     url(r'^member/$', views.member, name="member"),
     
  
