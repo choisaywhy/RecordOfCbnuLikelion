@@ -45,6 +45,36 @@ def board(request, category_id):
 
     return render(request, 'record/board.html',{'post_all':post_all, 'category':category, 'posts':posts, 'page_range':page_range, 'paginator':paginator })
 
+def board_free(request):
+    post_all = Post.objects.all().order_by('-created_at')
+    category_all = Category.objects.all()
+    page_numbers_range = 5
+    paginator = Paginator(post_all,page_numbers_range)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    return render(request, 'record/board_free.html',{'post_all':post_all,'category_all':category_all,'posts':posts})
+
+
+def board_notice(request):
+    post_all = Post.objects.all().order_by('-created_at')
+    category_all = Category.objects.all()
+    page_numbers_range = 5
+    paginator = Paginator(post_all,page_numbers_range)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    return render(request, 'record/board_notice.html',{'post_all':post_all,'category_all':category_all,'posts':posts})
+
+
+def board_project(request):
+    post_all = Post.objects.all().order_by('-created_at')
+    category_all = Category.objects.all()
+    page_numbers_range = 5
+    paginator = Paginator(post_all,page_numbers_range)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    return render(request, 'record/board_project.html',{'post_all':post_all,'category_all':category_all,'posts':posts})
+
+
 def post_edit(request, post_id):
     post = get_object_or_404(Post, id=post_id)
 

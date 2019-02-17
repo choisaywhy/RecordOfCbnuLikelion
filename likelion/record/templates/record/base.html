@@ -14,13 +14,23 @@
         <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
-
-    </haed>
-    <body class="container-fluid">
-       
        
         <h3 class="logo"><img class="logo_img" src="{% static 'logo.jpg' %}">          충북대학교 x 멋쟁이사자처럼</h3>
+        <img class="lion_icon" src="{% static 'lion_icon.png' %}">
+        <h4 class="me">me</h4>
+
+
+
+           
         
+    {% comment %}================================================== {% endcomment %}
+      
+ 
+    {% comment %}  ======================================================{% endcomment %}
+
+    </haed>
+
+    <body class="container-fluid">
         <hr/>
 
         <a href="{% url 'logout'%}">
@@ -36,7 +46,7 @@
             {% endif %} {% endcomment %}
 
         {% comment %} 메뉴============================ {% endcomment %}
-        <nav>
+        <nav class="calendar_menu">
 
             <ul>
 
@@ -62,11 +72,11 @@
 
             <ul>
 
-            <li><a href="#">Board.a</a></li>
+            <li><a href= "{% url 'board_notice'%}">공지</a></li>
 
-            <li><a href="#">b</a></li>
+            <li><a href="{% url 'board_free'%}">자유</a></li>
 
-            <li><a href="#">c</a></li>
+            <li><a href="{% url 'board_project'%}">과제</a></li>
 
             </ul>
 
@@ -93,6 +103,7 @@
     </body>
 
     <footer>
+    <br>
         MAKE
     
     </footer>
