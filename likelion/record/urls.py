@@ -1,6 +1,9 @@
 from django.conf.urls import url
 from . import views
 from .models import Post,Category,Comment,Recomment
+from django.conf import settings
+from django.conf.urls.static import static
+
 #record/
 urlpatterns = [
     url(r'^post_new/$', views.post_new, name="post_new"),
@@ -18,4 +21,4 @@ urlpatterns = [
     url(r'^member/$', views.member, name="member"),
     
  
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

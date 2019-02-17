@@ -15,6 +15,7 @@ class Post(models.Model):
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    file = models.FileField(null=True)
 
     def __str__(self):
         return self.title

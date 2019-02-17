@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 def post_new(request):
     if request.method == 'POST': # 채워져 있는 글 (글수정)
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save()
             return redirect(post)
