@@ -15,11 +15,18 @@
         
         <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+        <h3 class="logo"><img class="logo_img" src="{% static 'logo.jpg' %}">          충북대학교 x 멋쟁이사자처럼</h3>
+        <img class="lion_icon" src="{% static 'lion_icon.png' %}">
+        <h4 class="me">me</h4>
+
+       
+
     </haed>
     <body class="container-fluid">
        
        
-        <h3 class="logo"><img class="logo_img" src="{% static 'logo.jpg' %}">          충북대학교 x 멋쟁이사자처럼</h3>
+        
         <hr/>
         
        
@@ -35,7 +42,7 @@
 
             <ul>
 
-            <li><a href="{% url 'main'%}">Home</a></li>
+            <li><a href="#">introduce</a></li>
 
             <li><a href="#">Calendar</a>
 
@@ -57,17 +64,17 @@
 
             <ul>
 
-            <li><a href="#">Board.a</a></li>
+            <li><a href= "{% url 'board_notice'%}">공지</a></li>
 
-            <li><a href="#">b</a></li>
+            <li><a href="{% url 'board_free'%}">자유</a></li>
 
-            <li><a href="#">c</a></li>
+            <li><a href="{% url 'board_project'%}">과제</a></li>
 
             </ul>
 
             </li>
 
-            <li><a href="#">Member</a></li>
+            <li><a href="{% url 'member'%}">Member</a></li>
 
             </ul>
 
