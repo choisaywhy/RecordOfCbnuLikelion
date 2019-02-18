@@ -7,7 +7,7 @@
     <p>Created date : {{ post.created_at }}</p>
     <p>Updated date : {{ post.updated_at }}</p>
     <p>Category : {{ post.category }}</p>
-    <P><img src = "{{post.file.url}}" alt=""></P>
+    {% comment %} <P><img src = "{{post.file.url}}" alt=""></P> {% endcomment %}
     <p>File : <a id="id_uploaded_file" href="{{ post.file.url }}" download>{{ post.file }}</a></p>
 </div>
 

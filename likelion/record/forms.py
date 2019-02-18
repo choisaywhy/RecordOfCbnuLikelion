@@ -1,5 +1,6 @@
 from django import forms
 from .models import Post, Comment, Recomment
+from django.contrib.auth import models as auth_models
 
 class PostForm(forms.ModelForm):
     
@@ -25,3 +26,7 @@ class RecommentForm(forms.ModelForm):
     class Meta:
         model = Recomment
         fields = ('text',)
+
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control',}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control',}))

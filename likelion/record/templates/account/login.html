@@ -1,0 +1,28 @@
+{% extends 'record/base.html' %}
+
+{% block title %}Login{% endblock %}
+{% block content %}
+<div class="login">
+   <form action="" method="post">
+      {% csrf_token %}
+      {% for field in login_form %}
+         <div>
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+               {% for error in field.errors %}
+               <span>{{ error }}</span>
+               {% endfor %}
+            {% endif %}
+         </div>
+      {% endfor %}
+
+      {% if login_form.non_field_errors %}
+         {% for error in login_form.non_field_errors %}
+         <p><b>{{ error }}</b></p>
+         {% endfor %}
+      {% endif %}
+      <button>로그인</button>
+   </form>
+</div>
+{% endblock %}

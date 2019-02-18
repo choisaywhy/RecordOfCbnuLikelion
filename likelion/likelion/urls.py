@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path , include
-import record.views , account.views
+import record.views
 from django.contrib.auth import views as auth_views 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,6 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('record/',include('record.urls'), name="record"),
     path('main/', record.views.main, name="main"),
-    path('account/',include('account.urls'), name="account"),
     path('schedule/', include('schedule.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
