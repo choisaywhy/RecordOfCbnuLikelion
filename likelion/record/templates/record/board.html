@@ -14,15 +14,18 @@
             </tr>
         </thead>
         <tbody>
-        {% for post in posts %}    
-            <tr>
-                <td>{{ post.category }}</td>
-                <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }} [{{ post.comment_set.count }}]</a></td>
-                <td>user</td>
-                {% comment %} 유저이름 추가하기 {% endcomment %}
-                <td>{{ post.created_at }}</td>
-                {% comment %} 올린시간 추가하기 {% endcomment %}
-            </tr>
+
+        {% for post in posts %}
+            {% if post.category == category%}    
+                <tr>
+                    <td>{{ post.category }}</td>
+                    <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }} [{{ post.comment_set.count }}]</a></td>
+                    <td>user</td>
+                    {% comment %} 유저이름 추가하기 {% endcomment %}
+                    <td>{{ post.created_at }}</td>
+                    {% comment %} 올린시간 추가하기 {% endcomment %}
+                </tr>
+            {% endif %}
         {% endfor %}
             <nav>
             {% comment %} 페이지네이션 {% endcomment %}

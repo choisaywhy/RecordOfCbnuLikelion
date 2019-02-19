@@ -17,6 +17,15 @@
 
 <hr>
 
+<form action='{% url 'comment_new' post.id %}' method = 'post'>
+    {% csrf_token %}
+    <table margin = >
+        {{ form.as_table }}
+    </table>
+    <input type='submit' value='Save'>
+</form>
+
+<p>댓글</p>
 {% for comment in post.comment_set.all%}
     <div>
         <p>
@@ -27,29 +36,40 @@
     {% for recomment in comment.recomment_set.all%}
         <div>
             <p>
-                {{recomment.text}}
+                ㄴ{{recomment.text}}
             </p>
             <a href="{% url 'recomment_delete' post.id comment.id recomment.id %}">Delete</a>
         </div>
     {% endfor %}
+    
+    
+    <p>
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        대댓글 작성
+    </button>
+    </p>
+    <div class="collapse">
+        <div class="card card-body">
+                {% comment %} <p>
+                    대댓글작성
+                </p> {% endcomment %}
+            <form action='{% url 'recomment_new' post.id comment.id %}' method = 'post'>
+                {% csrf_token %}
+                <table margin = >
+                    {{ form.as_table }}
+                </table>
+                <input type='submit' value='Save'>
+            </form>
+        </div>
+    </div>
+
+
+
 {% empty %}
     <p>Comment here</p>
 {% endfor %}
 
-<form action='{% url 'comment_new' post.id %}' method = 'post'>
-    {% csrf_token %}
-    <table margin = >
-        {{ form.as_table }}
-    </table>
-    <input type='submit' value='Save'>
-</form>
 
-{% comment %} <form action='{% url 'recomment_new' post.id comment.id %}' method = 'post'>
-    {% csrf_token %}
-    <table margin = >
-        {{ form.as_table }}
-    </table>
-    <input type='submit' value='Save'>
-</form> {% endcomment %}
+
 
 {% endblock %}

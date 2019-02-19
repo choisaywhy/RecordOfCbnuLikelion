@@ -10,3 +10,36 @@
 
 </form>
 {% endblock %}
+
+
+
+<p>댓글</p>
+{% for comment in post.comment_set.all%}
+    <div class="media">
+        <img src="..." class="mr-3" alt="...">
+        <div class="media-body">
+            <h5 class="mt-0">댓글</h5>
+            <div>
+                <p>
+                    {{comment.text}}
+                </p>
+                <a href="{% url 'comment_delete' post.id comment.id  %}">Delete</a>
+            </div>
+        {% for recomment in comment.recomment_set.all%}     
+            <div class="media mt-3">
+                <a class="mr-3" href="#">
+                    <img src="..." class="mr-3" alt="...">
+                </a>
+                <div class="media-body">
+                    <h5 class="mt-0">대댓글</h5>
+                    <div>
+                        <p>
+                            ㄴ{{recomment.text}}
+                        </p>
+                        <a href="{% url 'recomment_delete' post.id comment.id recomment.id %}">Delete</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>

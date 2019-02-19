@@ -35,7 +35,7 @@ class Comment(models.Model):
 
 
 class Recomment(models.Model):
-    comment = models.ForeignKey(Comment,on_delete=models.CASCADE,)
+    comment = models.ForeignKey(Comment,on_delete=models.CASCADE,null=True)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     

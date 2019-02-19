@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment, Category, Recomment
-from .forms import PostForm, CommentForm, RecommentForm,LoginForm
+from .forms import PostForm, CommentForm, RecommentForm
 from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
@@ -84,45 +84,25 @@ def comment_delete(request, post_id, comment_id):
 
 
 def recomment_new(request, post_id, comment_id):
+    post = get_object_or_404(Post, id=post_id)
     comment = get_object_or_404(Comment, id=comment_id)
-    form = RecommentForm(request.COMMENT)
+    form = RecommentForm(request.POST)
     if form.is_valid():
         recomment = form.save(commit=False)
         recomment.comment = comment
-        recomment.comment.post = post
+        comment.post = post
         recomment.save()
     return redirect(post)
 
 def recomment_delete(request, post_id, comment_id, recomment_id):
+    post = get_object_or_404(Post, id=post_id)
     recomment = get_object_or_404(Recomment, id=recomment_id)
     recomment.delete()
-    return redirect(recomment.comment.post)
+    # return redirect(recomment.comment.post)
+    return redirect(post)
 
 
 
 def member(request):
     return render(request, 'record/member.html')
 
-
-def login(request):
-    if request.method =='POST':
-        login_form = LoginForm(request.POST)
-        if login_form.is_valid():
-            username =login_form.cleaned_data['username']
-            password =login_form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
-            if user:
-                django_login(request,user)
-                return redirect('main')
-            # else:
-            # #     return HttpResponse('웅틀렷움')
-            else:
-                login_form.add_error(None,'아이디 또는 비밀번호가 올바르지 않음')
-    else:
-        login_form = LoginForm(request.POST)
-        return render(request,'account/login.html', {'login_form': login_form})
-
-
-def logout(request):
-        django_logout(request)
-        return redirect('account/login.html')   

@@ -18,10 +18,6 @@ urlpatterns = [
     url(r'^(?P<post_id>\d+)/comment/(?P<comment_id>\d+)/recomment/(?P<recomment_id>\d+)/delete/$', views.recomment_delete, name="recomment_delete"),
     url(r'^board/(?P<category_id>\d+)$', views.board, name="board"),
     url(r'^member/$', views.member, name="member"),
-    path('login/',views.login, name="login"),
-    path('logout/',views.logout, name="logout")
-
-
     
  
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
