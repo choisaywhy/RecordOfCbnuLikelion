@@ -8,9 +8,8 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ('title', 'file', 'text','category') 
 
-    def __init(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super(PostForm, self).__init__(*args, **kwargs)
-        self.fields['file'].required = False
 
 class CommentForm(forms.ModelForm):
 

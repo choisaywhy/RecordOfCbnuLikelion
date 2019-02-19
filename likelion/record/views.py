@@ -12,7 +12,9 @@ def post_new(request):
     if request.method == 'POST': # 채워져 있는 글 (글수정)
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save()
+            post = form.save(commit=False) 
+            post.name_id = User.objects.get(username = request.user.username) 
+            post.save() # 없어도 작동하는 지 확인ss
             return redirect(post)
     else: # 빈 폼 생성 (글쓰기)
         form = PostForm()
@@ -48,25 +50,55 @@ def board(request, category_id):
     return render(request, 'record/board.html',{'post_all':post_all, 'category':category, 'posts':posts, 'page_range':page_range, 'paginator':paginator })
 
 
+# def post_edit(request, post_id):
+#     post = get_object_or_404(Post, id=post_id)
+
+#     if request.method == 'POST': # 채워져 있는 글 (글수정)
+#         form = PostForm(request.POST, instance=post)
+#         if form.is_valid():
+#             post = form.save()
+#             return redirect(post)
+#     else: # 빈 폼 생성 (글쓰기)
+#         form = PostForm(instance=post)
+
+#     return render(request, 'record/post_edit.html', {'form':form,})
+
 def post_edit(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-
-    if request.method == 'POST': # 채워져 있는 글 (글수정)
+    if request.method == 'POST':
         form = PostForm(request.POST, instance=post)
         if form.is_valid():
             post = form.save()
             return redirect(post)
-    else: # 빈 폼 생성 (글쓰기)
-        form = PostForm(instance=post)
+    else:
+        if post.name_id == User.objects.get(username = request.user.get_username()):
+            post = get_object_or_404(Post, id=post_id)
+            form = PostForm(instance=post)
+            return render(request, 'record/post_edit.html', {'form':form})
+        else:
+            return render(request, 'record/warning.html')
 
-    return render(request, 'record/post_edit.html', {'form':form,})
 
+
+
+# def post_delete(request, post_id):
+#     post = get_object_or_404(Post, id=post_id)
+#     post.delete()
+#     return redirect(main)
+            # 삭제 이후의 페이지를 불러온다
 
 def post_delete(request, post_id):
     post = get_object_or_404(Post, id=post_id)
-    post.delete()
-    return redirect(main)
-            # 삭제 이후의 페이지를 불러온다
+    if post.name_id == User.objects.get(username = request.user.get_username()):
+        post.delete()
+        return redirect(main)
+    else:
+        return render(request, 'record/warning.html')
+
+def warning(request):
+    return render(request, 'record/warning.html')
+
+
 
 def comment_new(request, post_id):
     post = get_object_or_404(Post, id=post_id)
@@ -105,4 +137,7 @@ def recomment_delete(request, post_id, comment_id, recomment_id):
 
 def member(request):
     return render(request, 'record/member.html')
+
+def introduce(request):
+    return render(request, 'record/introduce.html')
 
