@@ -1,7 +1,7 @@
 {% load static %}
 {% load staticfiles %}
 <html>
-    <haed>
+    <head>
              
         <!-- 합쳐지고 최소화된 최신 CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -15,6 +15,12 @@
         <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+         <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
        
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,10 +31,12 @@
         <img class="lion_icon" src="{% static 'lion_icon.png' %}">
         <h4 class="me">me</h4>
         <style type="text/css">
-        body {color:white;}
+        body 
+        { color:white; }
+
         </style>
 
-    </haed>
+    </head>
 
     <body class="container-fluid">
         <hr/>
@@ -101,11 +109,8 @@
         <br>
         <br>
 
-        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-        <script scr ="js/jquery.min.js"></script>
-        <script scr ="js/bootstrap.bundle.min.js"></script>
-        <script scr ="js/bootstrap.min.js"></script>
+    
+    
     </body>
 
     <footer>
