@@ -105,14 +105,19 @@ def comment_new(request, post_id):
     form = CommentForm(request.POST)
     if form.is_valid():
         comment = form.save(commit=False)
+        comment.name_id = User.objects.get(username = request.user.username) 
         comment.post = post
         comment.save()
     return redirect(post)
 
 def comment_delete(request, post_id, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    comment.delete()
-    return redirect(comment.post)
+    if comment.name_id == User.objects.get(username = request.user.get_username()):
+        comment.delete()
+        return redirect(comment.post)
+    else:
+        return render(request, 'record/warning.html')
+
 
 
 def recomment_new(request, post_id, comment_id):

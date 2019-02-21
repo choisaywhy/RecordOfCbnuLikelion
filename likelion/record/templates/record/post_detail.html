@@ -1,12 +1,15 @@
 {% extends 'record/base.html' %}
+{% load static %}
+{% load staticfiles %}
 {% block content %}
-<div>
+<div class = "post">
     <h3>{{ post.title }}</h3>
     <p>{{ post.text }}</p>
+    <p> 작성자 : {{post.name_id}}</p>
     <p>Created date : {{ post.created_at }}</p>
     <p>Updated date : {{ post.updated_at }}</p>
     <p>Category : {{ post.category }}</p>
-    {% comment %} <P><img src = "{{post.file.url}}" alt=""></P> {% endcomment %}
+    <P><img src = "{{post.file.url}}" alt=""></P>
     <p>File : <a id="id_uploaded_file" href="{{ post.file.url }}" download>{{ post.file }}</a></p>
 </div>
 
@@ -28,7 +31,7 @@
 {% for comment in post.comment_set.all%}
     <div>
         <p>
-            {{comment.text}}
+           {{comment.name_id}} : {{comment.text}}
         </p>
          <a href="{% url 'comment_delete' post.id comment.id  %}" class = "btn btn-warning float-right" role="button">Delete</a>
     </div>

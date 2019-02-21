@@ -1,22 +1,25 @@
 {% extends 'record/base.html' %}
 {% block content %}
-<br><br>
+{% load static %}
+{% load staticfiles %}
+<div class="post">
+<br><br><br><br><br><br>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      <!-- <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <a href="이미지" onclick="window.open(this.href, '_blank', 'width=500px, height=500px, toolbars=no,scrollbars=no');return false;"> <img src="..." class="d-block w-100" alt="" height="500px"> </a>
+          <img src="{% static 'like42.png' %}" class="d-block w-100" alt="" height="500px" data-toggle="modal" data-target="#exampleModal">  </a>
       </div>
       <div class="carousel-item">
-        <a href="이미지" onclick="window.open(this.href, '_blank', 'width=500px, height=500px, toolbars=no,scrollbars=no');return false;"> <img src="..." class="d-block w-100" alt="" height="500px"></a>
-      </div>
-      <div class="carousel-item">
+          <img src="{% static 'like2.jpg' %}" class="d-block w-100" alt="" height="500px" data-toggle="modal" data-target="#exampleModal2"></a>
+        </div>
+      <!-- <div class="carousel-item">
         <a href="이미지" onclick="window.open(this.href, '_blank', 'width=500px, height=500px, toolbars=no,scrollbars=no');return false;"><img src="..." class="d-block w-100" alt="" height="500px"></a>
-      </div>
+      </div> -->
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -27,4 +30,55 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  <br><br><br>
+  <center><p style="font-size : 20px;">이미지를 클릭하세요!</p></center>
+
+  <div style="color : black;">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" style="font-size:25px; font-weight:bolder;">정규 수업</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            1주에 한번씩, 정해진 커리큘럼에 따라 정규 수업을 진행합니다.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">철저한 복습</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            매 수업, 과제를 통해 학생들의 이해와 실력 향상을 돕습니다.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+</div>
+
+
 {% endblock %}

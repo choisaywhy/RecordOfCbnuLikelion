@@ -1,6 +1,6 @@
 {% extends 'record/base.html' %}
 {% block content %}
-<div>
+<div class="post">
     <h3>{{ category.name }}</h3>
     <a href="{% url 'post_new' %}"> New </a>
     <a href="{% url 'main' %}">main</a>
@@ -20,7 +20,7 @@
                 <tr>
                     <td>{{ post.category }}</td>
                     <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }} [{{ post.comment_set.count }}]</a></td>
-                    <td>user</td>
+                    <td>{{ post.name_id }}</td>
                     {% comment %} 유저이름 추가하기 {% endcomment %}
                     <td>{{ post.created_at }}</td>
                     {% comment %} 올린시간 추가하기 {% endcomment %}

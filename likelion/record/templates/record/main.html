@@ -1,6 +1,7 @@
 {% extends 'record/base.html' %}
 {% block content %}
-<h1>메인페이지</h1>
+<div class="post">
+<h1 class="logo" style="font-size : 40px;">메인페이지</h1>
 <div>
 {% comment %} {% for category in category_all %}
     <h3><a href="{% url 'board' category.id %}">{{ category.name }}</h3> {% endcomment %}
@@ -17,8 +18,8 @@
         {% for post in posts %}
             <tr>
                 <td>{{ post.category }}</td>
-                <td><a href="{% url 'post_detail' post.id %}">{{ post.title }} [{{ post.comment_set.count }}]</a></td>
-                <td>user</td>
+                <td><a href="{% url 'post_detail' post.id %}">{{ post.title }} [{{post.comment_set.count}}]</a></td>
+                <td>{{ post.name_id}}</td>
                 {% comment %} 유저이름 추가하기 {% endcomment %}
                 <td>{{ post.created_at }}</td>
             </tr>
@@ -30,6 +31,7 @@
     <br>
 {% comment %} {% endfor %} {% endcomment %}
 
+</div>
 </div>
 
 {% endblock %}

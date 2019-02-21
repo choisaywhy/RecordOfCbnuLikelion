@@ -2,7 +2,8 @@
 {% load staticfiles %}
 <html>
     <head>
-             
+            
+            <link href="https://fonts.googleapis.com/css?family=Sarabun" rel="stylesheet">
         <!-- 합쳐지고 최소화된 최신 CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -32,7 +33,8 @@
         <h4 class="me">me</h4>
         <style type="text/css">
         body 
-        { color:white; }
+        { color:white; 
+        }
 
         </style>
 
@@ -55,11 +57,12 @@
             {% endif %} {% endcomment %}
 
         {% comment %} 메뉴============================ {% endcomment %}
+        <div class="post" style="font-size:20px;">
         <nav class="calendar_menu">
 
             <ul>
 
-            <li><a href="{% url 'introduce' %}">introduce</a></li>
+            <li><a href="{% url 'introduce' %}">Introduce</a></li>
 
             <li><a href="#">Calendar</a>
 
@@ -96,7 +99,7 @@
             </ul>
 
         </nav>
-        
+        </div>
         {% comment %} ============================== {% endcomment %}
       
         <div class="mini_background" style="overflow-y: scroll; height:800px;">
