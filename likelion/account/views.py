@@ -1,27 +1,28 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.http import HttpResponse
-from django.contrib import auth
-from django.contrib.auth import login, authenticate
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import LoginForm
-# Create your views here.
+from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import (login as django_login, authenticate, logout as django_logout)
 
 def login(request):
     if request.method =='POST':
-        form = LoginForm(request.POST)
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request,user)
-            return redirect('record/main.html')
-        else:
-            return HttpResponse('error:username or password is incorrect.')
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            username =login_form.cleaned_data['username']
+            password =login_form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user:
+                django_login(request,user)
+                return redirect('main')
+            # else:
+            # #     return HttpResponse('웅틀렷움')
+            else:
+                return HttpResponse('틀렷움')
     else:
-        return render(request,'account/login.html')
+        login_form = LoginForm(request.POST)
+        return render(request,'account/login.html', {'login_form': login_form})
+
 
 def logout(request):
-    if request.method == 'POST':
-        auth.logout(request)
-        return redirct('record/main.html')
-    return render(request,'account/login.html')
+        django_logout(request)
+        return redirect('login')   

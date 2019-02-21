@@ -198,3 +198,11 @@ footer {
     right: 100px;
     top : 65px;
 }
+
+.warning {
+    padding-top : 300px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+}
