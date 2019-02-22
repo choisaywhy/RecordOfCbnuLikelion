@@ -241,3 +241,20 @@ footer {
     justify-content: center;
     align-items: center; 
 }
+
+
+.left {
+margin-top : -50px;
+    float : left;
+    margin-left : 50px;
+  
+ 
+}
+
+.right {
+  margin-top : -50px;  
+    float : left;
+    margin-left : 300px;
+
+}
+
