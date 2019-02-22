@@ -1,10 +1,10 @@
 {% extends 'record/base.html' %}
 {% block content %}
-<div class="post">
+<div class="post" style="color:white">
     <h3>{{ category.name }}</h3>
     <a href="{% url 'post_new' %}"> New </a>
     <a href="{% url 'main' %}">main</a>
-    <table class="table">
+    <table class="table" style="color:white">
         <thead>
             <tr>
                 <th>category</th>

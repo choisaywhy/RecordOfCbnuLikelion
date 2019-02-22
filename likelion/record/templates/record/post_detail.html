@@ -2,7 +2,7 @@
 {% load static %}
 {% load staticfiles %}
 {% block content %}
-<div class = "post">
+<div class = "post" style="color:white">
     <h3>{{ post.title }}</h3>
     <p>{{ post.text }}</p>
     <p> 작성자 : {{post.name_id}}</p>
@@ -27,16 +27,16 @@
     <input type='submit' value='Save' class = "btn btn-info">
 </form>
 
-<p>댓글</p>
+
 {% for comment in post.comment_set.all%}
-    <div>
+    <div class="container" style="color:white">
         <p>
            {{comment.name_id}} : {{comment.text}}
         </p>
          <a href="{% url 'comment_delete' post.id comment.id  %}" class = "btn btn-warning float-right" role="button">Delete</a>
     </div>
     {% for recomment in comment.recomment_set.all%}
-        <div>
+        <div class="container" style="color:white">
             <p>
                 ㄴ{{recomment.text}}
             </p>

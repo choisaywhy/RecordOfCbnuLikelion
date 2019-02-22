@@ -5,9 +5,10 @@ from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.contrib.auth import (login as django_login, authenticate, logout as django_logout)
-
+from django.contrib.auth.decorators import login_required,permission_required
 
 # Create your views here.
+@login_required
 def post_new(request):
     if request.method == 'POST': # 채워져 있는 글 (글수정)
         form = PostForm(request.POST, request.FILES)
@@ -20,20 +21,23 @@ def post_new(request):
         form = PostForm()
     return render(request, 'record/post_new.html', {'form':form,})
 
+@login_required
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     form = CommentForm()
     return render(request, 'record/post_detail.html',{'post':post,'form':form,})
 
+@login_required
 def main(request) :
     post_all = Post.objects.all().order_by('-created_at')
     category_all = Category.objects.all()
-    page_numbers_range = 5
+    page_numbers_range = 12
     paginator = Paginator(post_all,page_numbers_range)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     return render(request, 'record/main.html',{'post_all':post_all,'category_all':category_all,'posts':posts})
 
+@login_required
 def board(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     post_all = Post.objects.all().order_by('-created_at')
@@ -63,6 +67,8 @@ def board(request, category_id):
 
 #     return render(request, 'record/post_edit.html', {'form':form,})
 
+
+@login_required
 def post_edit(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if request.method == 'POST':
@@ -86,7 +92,7 @@ def post_edit(request, post_id):
 #     post.delete()
 #     return redirect(main)
             # 삭제 이후의 페이지를 불러온다
-
+@login_required
 def post_delete(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if post.name_id == User.objects.get(username = request.user.get_username()):
@@ -95,6 +101,7 @@ def post_delete(request, post_id):
     else:
         return render(request, 'record/warning.html')
 
+@login_required
 def warning(request):
     return render(request, 'record/warning.html')
 
@@ -139,10 +146,11 @@ def recomment_delete(request, post_id, comment_id, recomment_id):
     return redirect(post)
 
 
-
+@login_required
 def member(request):
     return render(request, 'record/member.html')
 
+@login_required
 def introduce(request):
     return render(request, 'record/introduce.html')
 
