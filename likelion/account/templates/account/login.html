@@ -34,7 +34,7 @@
    <div style = "justify-content:center; padding-top:250px;"> 
       <img src="{% static 'logo5.png' %}" style="width:130px; height:130px; margin-left:0px; margin-bottom:10px;">
                 <h2 style="font-weight:bolder;">충북대학교 x 멋쟁이 사자처럼</h2> 
-   <form action="" method="post">
+   <form action="" method="post" enctype="multipart/form-data">
       {% csrf_token %}
       {% for field in login_form %}
          <div>

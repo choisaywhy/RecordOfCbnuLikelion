@@ -30,7 +30,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <h3 class="logo" style="color:white"><a href="{% url 'main' %}"><img class="logo_img" src="{% static 'logo6.png' %}"></a>          충북대학교 x 멋쟁이사자처럼</h3>
         <img class="lion_icon" src="{% static 'lion_icon.png' %}">
-        <h4 class="me">me</h4>
+        <h4 class="me">{{post.name_id}}</h4>
     </head>
 
     <body class="container-fluid">

@@ -11,6 +11,14 @@ body {
 
 }
 
+/* .contents {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center; 
+} */
+
+
 .logo_img {
     width : 70px;
     height : 70px;
