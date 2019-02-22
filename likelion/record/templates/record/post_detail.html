@@ -38,29 +38,24 @@
 
     <p>댓글 {{ post.comment_set.count }}개</p>
 
-    
+    <div class="container" style="background-color: rgba( 255, 255, 255, 0.5 );">
         {% for comment in post.comment_set.all%}
-            <div class="container" style="background-color: rgba( 255, 255, 255, 0.5 )">
-                <p>{{comment.name_id}}  :  {{comment.text}}</p>
-                <p class="float-right">{{comment.created_at}}</p>
+            <div class="container">
                 <br>
-                <br>
+                <p><strong>{{comment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{comment.created_at}}</p>
+                <p>&nbsp{{comment.text}}</p>
                 <a href="{% url 'comment_delete' post.id comment.id  %}" class = "btn btn-warning float-right" role="button">Delete</a>
-                
             </div>
             {% for recomment in comment.recomment_set.all%}
-                <div class="container" style="color:white; background-color: rgba( 255, 255, 255, 0.5 )">
-                    <p>    ㄴ{{recomment.name_id}}  :  {{recomment.text}}</p>
-                    <p class="float-right">{{comment.created_at}}</p>
+                <div class="container" style="color:white;">
                     <br>
-                    <br>
+                    <p>ㄴ<strong>{{recomment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{recomment.created_at}}</p>
+                    <p>&nbsp{{recomment.text}}</p>
                     <a href="{% url 'recomment_delete' post.id comment.id recomment.id %}" class = "btn btn-warning float-right" role="button">Delete</a>
                 </div>
             {% endfor %}
             <br>
             <br>
-
-
 
             <button data-toggle="collapse" data-target="#recomment" class = "btn btn-info">Recomment</button>
             
@@ -69,16 +64,18 @@
                     <form action='{% url 'recomment_new' post.id comment.id %}' method = 'post'>
                         {% csrf_token %}
                             <table margin = >
-                                {{ form.as_table }}
+                                {{ form.as_p }}
+                                <input type='submit' value='Save' class = "btn btn-info float-right">
                             </table>
-                            <input type='submit' value='Save' class = "btn btn-info">
+                            
                     </form>
 
                 </div>
             </div>
-    {% empty %}
-        <p>Comment here</p>
-    {% endfor %}
+        {% empty %}
+            <p>Comment here</p>
+        {% endfor %}
+    <div>
 
     <br>
     <br>
@@ -90,11 +87,11 @@
     <form action='{% url 'comment_new' post.id %}' method = 'post'>
         {% csrf_token %}
         <table margin = >
-            {{ form.as_table }}
+            {{ form.as_p }}
+            <input type='submit' value='Save' class = "btn btn-info float-right">
         </table>
-        <input type='submit' value='Save' class = "btn btn-info float-right">
     </form>
 
-    {% comment %} <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg"> {% endcomment %}
+    
 
-{% endblock %}
+{% endblock %} 

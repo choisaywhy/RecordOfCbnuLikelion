@@ -19,8 +19,10 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['text',]
         widgets = {
-            'text': TextInput(attrs={'class':'form-control form-control-lg'}),
+            'text': TextInput(attrs={'class':'form-control'}),
         }
+        
+
            
 
 
@@ -29,4 +31,7 @@ class RecommentForm(forms.ModelForm):
     class Meta:
         model = Recomment
         fields = ['text',]
+        widgets = {
+            'text': TextInput(attrs={'class':'form-control form-control-lg'}),
+        }
 
