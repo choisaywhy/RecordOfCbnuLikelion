@@ -2,10 +2,16 @@
 {% block content %}
 <div class="post" style="color:white">
     <center>
-    <h3>{{ category.name }}</h3>
-    <a href="{% url 'post_new' %}"> New </a>
-    <a href="{% url 'main' %}">main</a>
+        <h2><strong>{{ category.name }}</strong></h2>
     </center>
+    <br>
+    <a href="{% url 'post_new' %}" class = "btn btn-info float-right" role="button"> New </a>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    
     <table class="table" style="color:white">
         <thead>
             <tr>
@@ -23,54 +29,55 @@
                     <td>{{ post.category }}</td>
                     <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }} [{{ post.comment_set.count }}]</a></td>
                     <td>{{ post.name_id }}</td>
-                    {% comment %} 유저이름 추가하기 {% endcomment %}
                     <td>{{ post.created_at }}</td>
-                    {% comment %} 올린시간 추가하기 {% endcomment %}
                 </tr>
             {% endif %}
         {% endfor %}
-            <nav>
+        </tbody>
+    </table>
+
+            <nav aria-label="Page navigation example">
             {% comment %} 페이지네이션 {% endcomment %}
                 <ul class="pagination">
                     {% if posts.has_previous %}
                         <li>
                             <a href="?page={{ posts.previous_page_number }}">
-                                <span>Prev</span>
+                                <span><<</span>
                             </a>
                         </li>
                     {% else %}
                         <li class="disabled">
                             <a href="#">
-                                <span>Prev</span>
+                                <span><<</span>
                             </a>
                         </li>
                     {% endif %}
 
                     {% for page in paginator.page_range %}
-                        <li {% if .posts.number == page %}class="active"{% endif %}>
-                            <a href="?page={{ page }}">{{ page }}</a>
+                        <li {% if posts.number == page %}class="active"{% endif %}>
+                            <a href="?page={{ page }}">
+                                <span>{{ page }}</span>
+                            </a>
                         </li>
                     {% endfor %}
 
                     {% if posts.has_next %}
                         <li>
                             <a href="?page={{ posts.next_page_number }}">
-                                <span>Next</span>
+                                <span>>></span>
                             </a>
                         </li>
                     {% else %}
-                        <li {% if not posts.has_next %}class="disabled"{% endif %}>
+                        <li class="disabled">
                             <a href="#">
-                                <span>Next</span>
+                                <span>>></span>
                             </a>
                         </li>
                     {% endif %}
                 </ul>
             </nav>
 
-        </tbody>
-    </table>
-
+        
 </div>
 
 {% endblock content %}

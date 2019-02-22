@@ -31,18 +31,15 @@
         <h3 class="logo" style="color:white"><a href="{% url 'main' %}"><img class="logo_img" src="{% static 'logo6.png' %}"></a>          충북대학교 x 멋쟁이사자처럼</h3>
         <img class="lion_icon" src="{% static 'lion_icon.png' %}">
         <h4 class="me">{{post.name_id}}</h4>
-    </head>
-
-    <body class="container-fluid">
-        <hr/>
         <a  class="logout" href="{% url 'logout'%}">
             <button type="button" class="btn btn-secondary">logout</button>
         </a>
+    </head>
+
+    <body class="container-fluid">
+        <hr>
         
-     
-       
-           
-       
+               
             {% comment %} 로그인/ 비로그인 시 뜨는 거 다르게 만든 것 수정중!
              {% if user.is_authenticated %} <p>Welcome, {{ user.username }}. Thanks for logging in.</p> 
             {% else %} 

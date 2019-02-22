@@ -41,7 +41,7 @@ def main(request) :
 def board(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     post_all = Post.objects.all().order_by('-created_at')
-    page_numbers_range = 5
+    page_numbers_range = 8
     # 한 페이지에 나올 게시글 수
     paginator = Paginator(post_all,page_numbers_range)
     page = request.GET.get('page')

@@ -30,59 +30,71 @@
     </div>
 </div>
     
-<div style="line-height:200px">
-<br>
-</div>
+
+<br style="line-height:200px">
+
    
 <hr>
-<form action='{% url 'comment_new' post.id %}' method = 'post'>
-    {% csrf_token %}
-    <table margin = >
-        {{ form.as_table }}
-    </table>
-    <input type='submit' value='Save' class = "btn btn-info">
-</form>
 
+    <p>댓글 {{ post.comment_set.count }}개</p>
 
-{% for comment in post.comment_set.all%}
-    <div class="container" style="color:white">
-        <p>
-           {{comment.name_id}} : {{comment.text}}
-        </p>
-         <a href="{% url 'comment_delete' post.id comment.id  %}" class = "btn btn-warning float-right" role="button">Delete</a>
-    </div>
-    {% for recomment in comment.recomment_set.all%}
-        <div class="container" style="color:white">
-            <p>
-                ㄴ{{recomment.text}}
-            </p>
-            <a href="{% url 'recomment_delete' post.id comment.id recomment.id %}" class = "btn btn-warning float-right" role="button">Delete</a>
-        </div>
-    {% endfor %}
     
+        {% for comment in post.comment_set.all%}
+            <div class="container" style="background-color: rgba( 255, 255, 255, 0.5 )">
+                <p>{{comment.name_id}}  :  {{comment.text}}</p>
+                <p class="float-right">{{comment.created_at}}</p>
+                <br>
+                <br>
+                <a href="{% url 'comment_delete' post.id comment.id  %}" class = "btn btn-warning float-right" role="button">Delete</a>
+                
+            </div>
+            {% for recomment in comment.recomment_set.all%}
+                <div class="container" style="color:white; background-color: rgba( 255, 255, 255, 0.5 )">
+                    <p>    ㄴ{{recomment.name_id}}  :  {{recomment.text}}</p>
+                    <p class="float-right">{{comment.created_at}}</p>
+                    <br>
+                    <br>
+                    <a href="{% url 'recomment_delete' post.id comment.id recomment.id %}" class = "btn btn-warning float-right" role="button">Delete</a>
+                </div>
+            {% endfor %}
+            <br>
+            <br>
 
 
-<button data-toggle="collapse" data-target="#demo" class = "btn btn-info">대댓글 작성하기</button>
 
-<div id="demo" class="collapse">
-    <div class="card card-body">
-                    {% comment %} <p>
-                        대댓글작성
-                    </p> {% endcomment %}
-        <form action='{% url 'recomment_new' post.id comment.id %}' method = 'post'>
-            {% csrf_token %}
-                <table margin = >
-                    {{ form.as_table }}
-                </table>
-                <input type='submit' value='Save' class = "btn btn-info">
-        </form>
+            <button data-toggle="collapse" data-target="#recomment" class = "btn btn-info">Recomment</button>
+            
+            <div id="recomment" class="collapse border-0" style="background-color:transparent">
+                <div class="card card-body border-0" style="background-color:transparent">
+                    <form action='{% url 'recomment_new' post.id comment.id %}' method = 'post'>
+                        {% csrf_token %}
+                            <table margin = >
+                                {{ form.as_table }}
+                            </table>
+                            <input type='submit' value='Save' class = "btn btn-info">
+                    </form>
 
-    </div>
-</div>
-</div>
+                </div>
+            </div>
+    {% empty %}
+        <p>Comment here</p>
+    {% endfor %}
 
-{% empty %}
-    <p>Comment here</p>
-{% endfor %}
+    <br>
+    <br>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <p>댓글 작성</p>
+    <form action='{% url 'comment_new' post.id %}' method = 'post'>
+        {% csrf_token %}
+        <table margin = >
+            {{ form.as_table }}
+        </table>
+        <input type='submit' value='Save' class = "btn btn-info float-right">
+    </form>
+
+    {% comment %} <input class="form-control form-control-lg" type="text" placeholder=".form-control-lg"> {% endcomment %}
 
 {% endblock %}
