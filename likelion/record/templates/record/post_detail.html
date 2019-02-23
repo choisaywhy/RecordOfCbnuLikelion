@@ -12,9 +12,9 @@
         <h3 style="font-size : 40px;">{{ post.title }}</h3>
         {% if post.file%}
     <p>File : <a id="id_uploaded_file" href="{{ post.file.url }}" download>{{ post.file }}</a></p>
-    <P><img src = "{{post.file.url}}" alt=""></P>
+    <P><img src = "{{post.file.url}}" alt="" style=" max-width:400px; max-height:auto;" data-toggle="modal" data-target="#exampleModal"></P>
         {% endif %}
-        <p style="display : inline-block; width: 500px;">{{ post.text }}</p>
+        <p style="display : inline-block; width: 500px; overflow:auto; height:300px;">{{ post.text }}</p>
     </div>
 
     <div class = "right">
@@ -23,20 +23,20 @@
         <p> 작성일 : {{ post.created_at }}</p>
         <p> 수정일 : {{ post.updated_at }}</p>
         
-    <br><br><br> <div style = "margin-left : 100px;">
-    <a href="{% url 'main' %}">Back</a>
-    <a href="{% url 'post_edit' post.id %}">Edit</a>
-    <a href="{% url 'post_delete' post.id %}" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</a>
+        <br><br><br> 
+        <div style = "margin-left : 100px;">
+        <a href="{% url 'main' %}">Back</a>
+        <a href="{% url 'post_edit' post.id %}">Edit</a>
+        <a href="{% url 'post_delete' post.id %}" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</a>
+        </div>
     </div>
 </div>
-    
 
-<br style="line-height:200px">
+<br style="line-height:400px">
 
-   
-<hr>
+  <hr> 
 
-    <p>댓글 {{ post.comment_set.count }}개</p>
+    <p style="color : white;">댓글 {{ post.comment_set.count }}개</p>
 
     <div class="container" style="background-color: rgba( 255, 255, 255, 0.5 );">
         {% for comment in post.comment_set.all%}
@@ -75,7 +75,7 @@
         {% empty %}
             <p>Comment here</p>
         {% endfor %}
-    <div>
+   </div>
 
     <br>
     <br>
@@ -92,6 +92,26 @@
         </table>
     </form>
 
-    
+    {% if post.file %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow : scroll;">
+        <!-- <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="font-size:25px; font-weight:bolder;">{{post.file}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div> -->
+      
+            <div class="modal-body">
+                <img src = "{{post.file.url}}" alt="">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+            </div>
+          <!-- </div> -->
+          
+        </div>
+    {% endif %}
 
 {% endblock %} 
