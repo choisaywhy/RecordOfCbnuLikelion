@@ -35,5 +35,3 @@ class RecommentForm(forms.ModelForm):
         widgets = {
             'text': TextInput(attrs={'class':'form-control form-control-lg'}),
         }
-
-

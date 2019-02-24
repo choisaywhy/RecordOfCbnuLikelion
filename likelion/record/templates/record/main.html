@@ -1,79 +1,86 @@
 {% extends 'record/base.html' %}
+
 {% block content %}
-
-<div class="mini_background">
+<div class="mini_background"  style="overflow :auto;">
     <div class="container">
+        <div class="post">
+            <h1 style="font-size : 40px; color:white;">메인페이지</h1>
+            <div class="col-md-6">
+                {% comment %}
+                {% for category in category_all %}
+                <h3><a href="{% url 'board' category.id %}">{{ category.name }}</h3>
+                {% endcomment %}
+                <table class="table" style="color:white">
+                    <thead>
+                        <tr>
+                            <th>category</th>
+                            <th>title</th>
+                            <th>writer</th>
+                            <th>date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for post in posts %}
+                        <tr>
+                            <td>{{ post.category }}</td>
+                            <td>
+                                <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+                                [
+                                    {{ post.count_comments }}
+                                ]
+                                </td>
+                                <td>{{ post.name_id}}</td>
+                                {% comment %} 유저이름 추가하기 {% endcomment %}
+                            <td>{{ post.created_at }}</td>
+                        </tr>
+                        {% empty %}
+                        <p>게시판이 비었습니다.</p>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <br>
+                <br>
+                <h3>
+                    MORE<br><br> 
+                </h3>
+                <h4>
+                    face book ---  <a href="https://www.facebook.com/LikeLionatCBNU/?ref=br_rs" target="_blank"> GO </a>
+                </h4>
+             </div>   
 
-        <h1>메인페이지</h1>
-        <div class="col-md-6">
+             <div class="col-md-6">
+                        <h3>SCHEDULE</h3>
+                        <table class="table">
+                            <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Schedule</th>
+                                        <th>Start</th>
+                                        <th>End</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for schedule in schedules %}
+                                    <tr>
+                                        <td>{{ schedule.day }}</td>
+                                        <td>{{ schedule.notes }}</td>
+                                        <td>{{ schedule.start_time }}</td>
+                                        <td>{{ schedule.end_time }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+            
+                        </table>
+                </div>
 
-            {% comment %} {% for category in category_all %}
-            <h3><a href="{% url 'board' category.id %}">{{ category.name }}</h3> {% endcomment %}
-            <h3>NEW</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>category</th>
-                        <th>title</th>
-                        <th>writer</th>
-                        <th>date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for post in posts %}
-                    <tr>
-                        <td>{{ post.category }}</td>
-                        {% comment %} <td><a href="{% url 'post_detail' post.id %}">{{ post.title }}
-                                [{{ post.count_comments }}]</a></td> {% endcomment %}
-                        <td>user</td>
-                        {% comment %} 유저이름 추가하기 {% endcomment %}
-                        <td>{{ post.created_at }}</td>
-                    </tr>
-                    {% empty %}
-                    <p>게시판이 비었습니다.</p>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <br>
-            <br>
-            <h3>
-                MORE<br><br>
-            </h3>
-            <h4>
-                face book --- <a href="https://www.facebook.com/LikeLionatCBNU/?ref=br_rs" target="_blank"> GO </a>
-            </h4>
-        </div>
-
-        <div class="col-md-6">
-            <h3>SCHEDULE</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Schedule</th>
-                        <th>Start</th>
-                        <th>End</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for schedule in schedules %}
-                    <tr>
-                        <td>{{ schedule.day }}</td>
-                        <td>{{ schedule.notes }}</td>
-                        <td>{{ schedule.start_time }}</td>
-                        <td>{{ schedule.end_time }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+        </div>        
     </div>
 </div>
-</div>
-
 {% endblock %}
 
-{% comment %} 1. 나타나는 게시글 수 제한 (멋사강의 참고)
+{% comment %}
+1. 나타나는 게시글 수 제한 (멋사강의 참고)
 2. 각 게시판으로 넘어가는 기능 추가
 3. nav추가
-4. user 정보 조회기능 추가 {% endcomment %}
+4. user 정보 조회기능 추가
+{% endcomment %}
