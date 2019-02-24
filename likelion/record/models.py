@@ -27,6 +27,14 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("post_detail", kwargs={"post_id": self.id})
 
+    @property
+    def count_comments(self):
+        comments = self.comment_set.count()
+        recomments = 0
+        for comment in self.comment_set.all():
+            recomments += comment.recomment_set.count()
+        return comments + recomments
+
 
 #모델.쿼리셋.메소드
 class Comment(models.Model):

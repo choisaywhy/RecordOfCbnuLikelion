@@ -30,7 +30,6 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
         <h3 class="logo" style="color:white"><a href="{% url 'main' %}"><img class="logo_img" src="{% static 'logo6.png' %}"></a>          충북대학교 x 멋쟁이사자처럼</h3>
         <img class="lion_icon" src="{% static 'lion_icon.png' %}">
-<<<<<<< HEAD
         <h4 class="me">me</h4>
         <style type="text/css">
         
@@ -48,10 +47,8 @@
     </head>
 
     <body class="container-fluid">
-        <hr/>
-=======
+        {% comment %} <hr/> {% endcomment %}
         <h4 class="me">{{post.name_id}}</h4>
->>>>>>> 2735b38a003a5696e6f5003847c2e132c8fd88ec
         <a  class="logout" href="{% url 'logout'%}">
             <button type="button" class="btn btn-secondary">logout</button>
         </a>
@@ -113,17 +110,15 @@
         </div>
         {% comment %} ============================== {% endcomment %}
       
-        <div class="mini_background" style="overflow-y: scroll; height:700px;">
-            <div class="container">
+       
                 {% block content%}
                 {% endblock %}
-            </div>
-        </div>    
+ 
         <br>
         <br>
         <br>
     </body>
-    
+
     <footer>
     <br>
     <br>
