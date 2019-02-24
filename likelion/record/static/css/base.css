@@ -237,22 +237,11 @@ footer {
     align-items: center; 
 }
 
-<<<<<<< HEAD
-/* .left_box {
-    float : left;
-    width : 50%;
-}
-
-.right_box {
-    float : right;
-    width : 50%;
-}  화면 분할*/
-=======
 
 .left {
 margin-top : -50px;
     float : left;
-    width : 70%;
+ 
   
  
 }
@@ -261,7 +250,6 @@ margin-top : -50px;
   
   margin-top : -50px;  
     float : left;
-    width : 30%;
+
 }
 
->>>>>>> 2735b38a003a5696e6f5003847c2e132c8fd88ec

@@ -2,7 +2,7 @@
 {% load static %}
 {% load staticfiles %}
 {% block content %}
-<div class="mini_background">
+<div class="mini_background" style="overflow :auto;">
     <div class="container">
         <br><br><br>
 
@@ -23,7 +23,7 @@
                 
             </div>
 
-            <div class = "right" style="margin-left : 100px;">
+            <div class = "right" style="margin-left:100px;">
                 <br><br><br>
                 <p> 작성자 : {{post.name_id}}</p>
                 <p> 작성일 : {{ post.created_at }}</p>
@@ -122,3 +122,4 @@
     </div>
 </div>
 {% endblock %} 
+
