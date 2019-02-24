@@ -1,6 +1,7 @@
 {% extends 'record/base.html' %}
 {% load static %}
 {% load staticfiles %}
+
 {% block content %}
 <div class="mini_background" style="overflow :auto;">
     <div class="container">
@@ -71,9 +72,7 @@
                     {% endfor %}
                 <br>
                 <br>
-
-                <button data-toggle="collapse" data-target="#recomment" class="btn btn-info">Recomment</button>
-
+                <button data-toggle="collapse" data-target="#recomment" class="btn btn-info" name="{{ comment.id }}">Recomment</button>
                 <div id="recomment" class="collapse border-0" style="background-color:transparent">
                     <div class="card card-body border-0" style="background-color:transparent">
                         <form action='{% url 'recomment_new' post.id comment.id %}' method='post'>
@@ -82,9 +81,7 @@
                                 {{ form.as_p }}
                                 <input type='submit' value='Save' class="btn btn-info float-right">
                             </table>
-
                         </form>
-
                     </div>
                 </div>
                 {% empty %}

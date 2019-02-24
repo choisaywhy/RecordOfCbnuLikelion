@@ -26,6 +26,7 @@ def post_new(request):
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     form = CommentForm()
+
     return render(request, 'record/post_detail.html',{'post':post,'form':form,})
 
 @login_required
