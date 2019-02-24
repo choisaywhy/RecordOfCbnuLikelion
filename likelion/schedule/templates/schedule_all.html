@@ -1,10 +1,10 @@
+
 {% extends 'record/base.html' %}
 
 {% block content %}
-<div class="post">
 <div class="mini_background">
     <div class="container">
-        <div class="col-md-6">
+
             <br><br><br><br><br><br><br>
             <table class="table" style="color:white;">
                 <thead>
@@ -26,25 +26,41 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
 
-        <div class="col-md-6">
-            <br>
-            <br>
-            <h2>add here</h2>
-            <br>
-            <br>
-            <form action="" method="post">
-                {% csrf_token %}
-                <table>
-                    {{ form }}
-                </table>
-                <input type="submit" value="SAVE">
-            </form>
-        </div>
+            <nav>
+                {% comment %} 페이지네이션 {% endcomment %}
+                <ul class="pagination">
+                    {% if events.has_previous %}
+                    <li>
+                        <a href="?page={{ events.previous_page_number }}">
+                            <span>
+                                <<</span> </a> </li> {% else %} <li class="disabled">
+                                    <a href="#">
+                                        <span>
+                                            <<</span> </a> </li> {% endif %} {% for page in paginator.page_range %} <li
+                                                {% if events.number == page %}class="active" {% endif %}>
+                                                <a href="?page={{ page }}">
+                                                    <span>{{ page }}</span>
+                                                </a>
+                    </li>
+                    {% endfor %}
+
+                    {% if events.has_next %}
+                    <li>
+                        <a href="?page={{ events.next_page_number }}">
+                            <span>>></span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="disabled">
+                        <a href="#">
+                            <span>>></span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
     </div>
-</div>
 </div>
 
 {% endblock %}
-
