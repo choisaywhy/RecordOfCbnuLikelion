@@ -40,8 +40,9 @@ def main(request) :
     schedule_all = Event.objects.all()
     schedule_numbers_range = 8
     paginator_schedule = Paginator(schedule_all, schedule_numbers_range)
+    schedules = paginator_schedule.get_page(page)
 
-    return render(request, 'record/main.html',{'post_all':post_all,'category_all':category_all,'posts':posts, 'schedules':schedule_all})
+    return render(request, 'record/main.html',{'post_all':post_all,'category_all':category_all,'posts':posts, 'schedules':schedules})
 
 @login_required
 def board(request, category_id):

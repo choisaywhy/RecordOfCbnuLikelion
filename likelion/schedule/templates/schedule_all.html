@@ -16,7 +16,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for schedule in schedules %}
+                    {% for schedule in events %}
                     <tr>
                         <td>{{ schedule.day }}</td>
                         <td>{{ schedule.notes }}</td>
@@ -31,17 +31,23 @@
                 {% comment %} 페이지네이션 {% endcomment %}
                 <ul class="pagination">
                     {% if events.has_previous %}
-                    <li>
-                        <a href="?page={{ events.previous_page_number }}">
-                            <span>
-                                <<</span> </a> </li> {% else %} <li class="disabled">
-                                    <a href="#">
-                                        <span>
-                                            <<</span> </a> </li> {% endif %} {% for page in paginator.page_range %} <li
-                                                {% if events.number == page %}class="active" {% endif %}>
-                                                <a href="?page={{ page }}">
-                                                    <span>{{ page }}</span>
-                                                </a>
+                        <li>
+                            <a href="?page={{ events.previous_page_number }}">
+                                <span><<</span> 
+                            </a> 
+                        </li> 
+                    {% else %} 
+                        <li class="disabled">
+                            <a href="#">
+                                <span><<</span>
+                            </a> 
+                        </li> 
+                    {% endif %} 
+                    {% for page in paginator.page_range %} 
+                    <li {% if events.number == page %} class="active" {% endif %}>
+                            <a href="?page={{ page }}">
+                                <span>{{ page }}</span>
+                            </a>
                     </li>
                     {% endfor %}
 
