@@ -1,7 +1,8 @@
 {% load static %}
 {% load staticfiles %}
 <html>
-<haed>
+<head>
+    <title>멋쟁이사자처럼X충북대학교 흔적</title>
 
     <!-- 합쳐지고 최소화된 최신 CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -16,23 +17,33 @@
     <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-    <h3 class="logo"><a href="{% url 'main' %}"><img class="logo_img" src="{% static 'logo6.png' %}"></a> 충북대학교 x
-        멋쟁이사자처럼</h3>
-    <img class="lion_icon" src="{% static 'lion_icon.png' %}">
-    <h4 class="me">{{user.username}}</h4>
 
-</haed>
+</head>
 
 <body class="container-fluid">
+    <header style="height: 60px;">
 
+        <a href="{% url 'main' %}">
+        <h1 class="logo" style="color:white;font-size:28px;padding-left: 30px;padding-top:20px"><a href="{% url 'main' %}"><img class="logo_img"
+            src="{% static 'logo6.png' %}"></a> 충북대학교 x 멋쟁이사자처럼</h1>
+        
+        <img class="lion_icon" src="{% static 'lion_icon.png' %}" style="margin-right: 45px;margin-top:20px">
+        <div class="dropdown" style="float:right;">
+            <button class="btn dropdown-toggle" style="margin-right: 45px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{user.username}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <p class="dropdown-item">{{user.email}}</p>
+            <p class="dropdown-item">{{user.last_name}}{{user.first_name}}</p>
+            <a class="dropdown-item" href="{% url 'logout'%}">logout</a>
+            </div>
+        </div>
+    </header>
 
-
-    <hr />
-
-    <a class="logout" href="{% url 'logout'%}">
-        <button type="button" class="btn btn-secondary">logout</button>
-    </a>
-
+       <br>
+       <br>
+       <br>
+       <hr>
 
 
     {% comment %} 로그인/ 비로그인 시 뜨는 거 다르게 만든 것 수정중!
@@ -177,8 +188,13 @@
 </body>
 
 <footer>
-    MAKE
+        <br>
+        <br>
+        made by 최세화 / 신은지 / 박태미<br>in 멋쟁이 사자처럼 at 충북대학교 <br>
+        <small>start 2019/02/24</small>
 
-</footer>
+        <br>
+        <br>
+    </footer>
 
 </html>

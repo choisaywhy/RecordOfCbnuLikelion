@@ -2,7 +2,7 @@ body {
     background-image: url('lion.jpg');
     min-height: 100%;
     background : linear-gradient(to right, rgba(0, 0, 0, .5), rgba(255, 255, 255, .5)), url('lion.jpg'); 
-    background-size : cover;
+    background-size : flex;
     padding-left: 30px;
     color : white;
     font-family: Helvetica, sans-serif; font-size: 18px; line-height: 24px;
@@ -31,7 +31,8 @@ body {
 
 
 .logo {
-    font-size : 20px;
+    font-size : 30px;
+    vertical-align: middle;
 }
 
 
