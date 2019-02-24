@@ -6,18 +6,22 @@
 
 <div class = "post" style="color:white">
  
-    <div class = "left">
+    <div class = "left" style="margin-left:-10px;">
         <br>
         <p>Category : {{ post.category }}</p>
         <h3 style="font-size : 40px;">{{ post.title }}</h3>
         {% if post.file%}
     <p>File : <a id="id_uploaded_file" href="{{ post.file.url }}" download>{{ post.file }}</a></p>
-    <P><img src = "{{post.file.url}}" alt="" style=" max-width:400px; max-height:auto;" data-toggle="modal" data-target="#exampleModal"></P>
-        {% endif %}
+        <div style="float:left;"><img src = "{{post.file.url}}" alt="" style=" max-width:400px; max-height:auto;" data-toggle="modal" data-target="#exampleModal"></div>
+        <div style="float:left; margin-left:10px;"><p style="display : inline-block; width: 300px; overflow:auto; height:300px;">{{ post.text }}</p></div>
+    
+        {% else %}
         <p style="display : inline-block; width: 500px; overflow:auto; height:300px;">{{ post.text }}</p>
+        {% endif %}
+        
     </div>
 
-    <div class = "right">
+    <div class = "right" style="margin-left : 200px;">
         <br><br><br>
         <p> 작성자 : {{post.name_id}}</p>
         <p> 작성일 : {{ post.created_at }}</p>
@@ -47,7 +51,7 @@
                 <a href="{% url 'comment_delete' post.id comment.id  %}" class = "btn btn-warning float-right" role="button">Delete</a>
             </div>
             {% for recomment in comment.recomment_set.all%}
-                <div class="container" style="color:white;">
+                <div class="container">
                     <br>
                     <p>ㄴ<strong>{{recomment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{recomment.created_at}}</p>
                     <p>&nbsp{{recomment.text}}</p>

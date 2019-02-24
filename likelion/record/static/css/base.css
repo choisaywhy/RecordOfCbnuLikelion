@@ -241,15 +241,15 @@ footer {
 .left {
 margin-top : -50px;
     float : left;
-    margin-left : 50px;
+    width : 70%;
   
  
 }
 
 .right {
+  
   margin-top : -50px;  
     float : left;
-    margin-left : 300px;
-
+    width : 30%;
 }
 
