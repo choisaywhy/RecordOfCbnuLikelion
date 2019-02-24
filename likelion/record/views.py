@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment, Category, Recomment
+from schedule.models import Event
 from .forms import PostForm, CommentForm, RecommentForm
 from django.http import HttpResponse
 from django.core.paginator import Paginator
@@ -32,7 +33,8 @@ def main(request) :
     paginator = Paginator(post_all,page_numbers_range)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
-    return render(request, 'record/main.html',{'post_all':post_all,'category_all':category_all,'posts':posts})
+    schedule_all = Event.objects.all()
+    return render(request, 'record/main.html',{'post_all':post_all,'category_all':category_all,'posts':posts, 'schedules':schedule_all})
 
 def board(request, category_id):
     category = get_object_or_404(Category, id=category_id)

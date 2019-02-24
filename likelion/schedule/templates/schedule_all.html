@@ -1,26 +1,42 @@
 {% extends 'record/base.html' %}
 
 {% block content %}
-<table class="table">
-    <thead>
-            <tr>
-                <th>Date</th>
-                <th>Schedule</th>
-                <th>Start</th>
-                <th>End</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for schedule in schedules %}
-            <tr>
-                <td>{{ schedule.day }}</td>
-                <td>{{ schedule.notes }}</td>
-                <td>{{ schedule.start_time }}</td>
-                <td>{{ schedule.end_time }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+<div class="col-md-6">
+    <table class="table">
+        <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Schedule</th>
+                    <th>Start</th>
+                    <th>End</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for schedule in schedules %}
+                <tr>
+                    <td>{{ schedule.day }}</td>
+                    <td>{{ schedule.notes }}</td>
+                    <td>{{ schedule.start_time }}</td>
+                    <td>{{ schedule.end_time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+</div>
 
-</table>
+<div class="col-md-6">
+    <br>
+    <br>
+    <h3>add here</h3>
+    <br>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <input type="submit" value="SAVE">
+    </form>
+</div>
 {% endblock %}
 

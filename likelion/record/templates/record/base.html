@@ -31,10 +31,17 @@
         <img class="lion_icon" src="{% static 'lion_icon.png' %}">
         <h4 class="me">me</h4>
         <style type="text/css">
+        
         body 
         { color:white; }
 
         </style>
+        <link href="cssfile.css" media="screen and (min-width: 512px) and (max-width: 1024px)" rel="stylesheet"> <!--화면 조정-->
+        <style type="text/css" media="screen and (min-width: 512px) and (max-width:1024px)">  
+         @import url(cssfile.css) screen and (min-width: 152px) and (max-width: 1024px);
+        </style> 
+
+
 
     </head>
 
@@ -99,7 +106,7 @@
         
         {% comment %} ============================== {% endcomment %}
       
-        <div class="mini_background" style="overflow-y: scroll; height:800px;">
+        <div class="mini_background" style="overflow-y: scroll; height:700px;">
             <div class="container">
                 {% block content%}
                 {% endblock %}
@@ -108,16 +115,13 @@
         <br>
         <br>
         <br>
-
-    
-    
     </body>
+    
     <footer>
     <br>
     <br>
         MAKE
     <br>
     <br>
-    
     </footer>
 </html>

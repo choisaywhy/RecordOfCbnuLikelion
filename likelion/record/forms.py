@@ -2,6 +2,7 @@ from django import forms
 from .models import Post, Comment, Recomment
 
 
+
 class PostForm(forms.ModelForm):
     
     class Meta:
@@ -23,4 +24,5 @@ class RecommentForm(forms.ModelForm):
     class Meta:
         model = Recomment
         fields = ('text',)
+
 
