@@ -1,5 +1,6 @@
 {% extends 'record/base.html' %}
 {% block content %}
+<div class="post">
 <h1>EDIT</h1>
 <form action = "" method="post" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
@@ -8,4 +9,5 @@
     </table>
     <input type="submit" value="EDIT">
 </form>
+</div>
 {% endblock %}

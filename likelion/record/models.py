@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from django import forms
 
 # Create your models here.
 class Category(models.Model):
@@ -27,8 +28,9 @@ class Post(models.Model):
         return reverse("post_detail", kwargs={"post_id": self.id})
 
 
-
+#모델.쿼리셋.메소드
 class Comment(models.Model):
+    name_id = models.ForeignKey(User, on_delete = models.CASCADE, null=True)
     post = models.ForeignKey(Post,on_delete=models.CASCADE,)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
@@ -38,6 +40,7 @@ class Comment(models.Model):
 
 
 class Recomment(models.Model):
+    name_id = models.ForeignKey(User, on_delete = models.CASCADE, null=True)
     comment = models.ForeignKey(Comment,on_delete=models.CASCADE,null=True)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)

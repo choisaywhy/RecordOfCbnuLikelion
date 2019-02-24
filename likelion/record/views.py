@@ -6,9 +6,10 @@ from django.http import HttpResponse
 from django.core.paginator import Paginator
 from django.contrib.auth.models import User
 from django.contrib.auth import (login as django_login, authenticate, logout as django_logout)
-
+from django.contrib.auth.decorators import login_required,permission_required
 
 # Create your views here.
+@login_required
 def post_new(request):
     if request.method == 'POST': # 채워져 있는 글 (글수정)
         form = PostForm(request.POST, request.FILES)
@@ -21,25 +22,28 @@ def post_new(request):
         form = PostForm()
     return render(request, 'record/post_new.html', {'form':form,})
 
+@login_required
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     form = CommentForm()
     return render(request, 'record/post_detail.html',{'post':post,'form':form,})
 
+@login_required
 def main(request) :
     post_all = Post.objects.all().order_by('-created_at')
     category_all = Category.objects.all()
-    page_numbers_range = 5
+    page_numbers_range = 12
     paginator = Paginator(post_all,page_numbers_range)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
     schedule_all = Event.objects.all()
     return render(request, 'record/main.html',{'post_all':post_all,'category_all':category_all,'posts':posts, 'schedules':schedule_all})
 
+@login_required
 def board(request, category_id):
     category = get_object_or_404(Category, id=category_id)
     post_all = Post.objects.all().order_by('-created_at')
-    page_numbers_range = 5
+    page_numbers_range = 8
     # 한 페이지에 나올 게시글 수
     paginator = Paginator(post_all,page_numbers_range)
     page = request.GET.get('page')
@@ -65,6 +69,8 @@ def board(request, category_id):
 
 #     return render(request, 'record/post_edit.html', {'form':form,})
 
+
+@login_required
 def post_edit(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if request.method == 'POST':
@@ -88,7 +94,7 @@ def post_edit(request, post_id):
 #     post.delete()
 #     return redirect(main)
             # 삭제 이후의 페이지를 불러온다
-
+@login_required
 def post_delete(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     if post.name_id == User.objects.get(username = request.user.get_username()):
@@ -97,6 +103,7 @@ def post_delete(request, post_id):
     else:
         return render(request, 'record/warning.html')
 
+@login_required
 def warning(request):
     return render(request, 'record/warning.html')
 
@@ -107,14 +114,19 @@ def comment_new(request, post_id):
     form = CommentForm(request.POST)
     if form.is_valid():
         comment = form.save(commit=False)
+        comment.name_id = User.objects.get(username = request.user.username) 
         comment.post = post
         comment.save()
     return redirect(post)
 
 def comment_delete(request, post_id, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
-    comment.delete()
-    return redirect(comment.post)
+    if comment.name_id == User.objects.get(username = request.user.get_username()):
+        comment.delete()
+        return redirect(comment.post)
+    else:
+        return render(request, 'record/warning.html')
+
 
 
 def recomment_new(request, post_id, comment_id):
@@ -136,10 +148,11 @@ def recomment_delete(request, post_id, comment_id, recomment_id):
     return redirect(post)
 
 
-
+@login_required
 def member(request):
     return render(request, 'record/member.html')
 
+@login_required
 def introduce(request):
     return render(request, 'record/introduce.html')
 

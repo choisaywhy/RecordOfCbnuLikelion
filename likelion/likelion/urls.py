@@ -25,5 +25,5 @@ urlpatterns = [
     path('record/',include('record.urls'), name="record"),
     path('main/', record.views.main, name="main"),
     path('schedule/', include('schedule.urls')),
-    path('account/',include('account.urls'),name="account"),
+    path('accounts/',include('account.urls'),name="account"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

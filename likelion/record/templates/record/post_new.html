@@ -1,13 +1,15 @@
 {% extends 'record/base.html' %}
 {% block content %}
-<h1>NEW</h1>
+<div class = "post">
+<h1 style="color:white">NEW</h1>
 <form action = "" method="post" enctype="multipart/form-data" novalidate>
     {% csrf_token %}
     <table>
         {{ form }}
     </table>
-    <input type="submit" value="SAVE">
+    <input type="submit" value="SAVE" style="color:white">
 
 </form>
+</div>
 {% endblock %}
 

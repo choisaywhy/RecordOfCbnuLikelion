@@ -1,5 +1,6 @@
 {% extends 'record/base.html' %}
 {% block content %}
+<<<<<<< HEAD
 
 
 <h1>메인페이지</h1>
@@ -62,8 +63,41 @@
                 </tr>
                 {% endfor %}
             </tbody>
+=======
+<div class="post">
+<h1 style="font-size : 40px; color:white;">메인페이지</h1>
+<div>
+{% comment %} {% for category in category_all %}
+    <h3><a href="{% url 'board' category.id %}">{{ category.name }}</h3> {% endcomment %}
+    <table class="table" style="color:white">
+        <thead>
+            <tr>
+                <th>category</th>
+                <th>title</th>
+                <th>writer</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+            <tr>
+                <td>{{ post.category }}</td>
+                <td><a href="{% url 'post_detail' post.id %}">{{ post.title }} [{{post.comment_set.count}}]</a></td>
+                <td>{{ post.name_id}}</td>
+                {% comment %} 유저이름 추가하기 {% endcomment %}
+                <td>{{ post.created_at }}</td>
+            </tr>
+        {% empty %}
+        <p>게시판이 비었습니다.</p>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+{% comment %} {% endfor %} {% endcomment %}
+>>>>>>> 2735b38a003a5696e6f5003847c2e132c8fd88ec
 
     </table>
+</div>
 </div>
 
 {% endblock %}

@@ -11,6 +11,9 @@ body {
 
 }
 
+
+
+
 .logo_img {
     width : 70px;
     height : 70px;
@@ -33,10 +36,14 @@ body {
 
 
 .logo {
+    font-family: 'TmonMonsori';
+    font-weight: lighter;
     font-size : 20px;
 }
 
-
+.post {
+    font-family: 'Sarabun', 'NanumBarunGothic', sans-serif;
+}
 
 /*메뉴*/
 
@@ -178,6 +185,29 @@ footer {
 
 }
 
+@font-face { font-family: 'TmonMonsori'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/TmonMonsori.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+@font-face { 
+    font-family: 'NanumBarunGothic'; 
+    font-style: normal; 
+    font-weight: 400; 
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot'); 
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') 
+    format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') 
+    format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') 
+    format('truetype'); 
+} 
+
+@font-face { 
+    font-family: 'NanumBarunGothic'; 
+    font-style: normal; font-weight: 700; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebBold.ttf') format('truetype') } 
+    
+@font-face { 
+    font-family: 'NanumBarunGothic'; font-style: normal; font-weight: 300; src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot'); src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWebLight.ttf') format('truetype'); } 
+    
+
+.nanumbarungothic * { font-family: 'NanumBarunGothic', sans-serif; }
+    
 
 
 
@@ -207,6 +237,7 @@ footer {
     align-items: center; 
 }
 
+<<<<<<< HEAD
 /* .left_box {
     float : left;
     width : 50%;
@@ -216,3 +247,21 @@ footer {
     float : right;
     width : 50%;
 }  화면 분할*/
+=======
+
+.left {
+margin-top : -50px;
+    float : left;
+    width : 70%;
+  
+ 
+}
+
+.right {
+  
+  margin-top : -50px;  
+    float : left;
+    width : 30%;
+}
+
+>>>>>>> 2735b38a003a5696e6f5003847c2e132c8fd88ec

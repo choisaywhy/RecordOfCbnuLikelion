@@ -1,6 +1,7 @@
 {% extends 'record/base.html' %}
 
 {% block content %}
+<<<<<<< HEAD
 <div class="col-md-6">
     <table class="table">
         <thead>
@@ -23,6 +24,27 @@
             </tbody>
     </table>
 </div>
+=======
+<table class="table" style="color:white">
+    <thead>
+            <tr>
+                <th>Date</th>
+                <th>Schedule</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for schedule in schedules %}
+            <tr>
+                <td>{{ schedule.day }}</td>
+                <td>{{ schedule.notes }}</td>
+                <td>{{ schedule.start_time }}</td>
+                <td>{{ schedule.end_time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+>>>>>>> 2735b38a003a5696e6f5003847c2e132c8fd88ec
 
 <div class="col-md-6">
     <br>
