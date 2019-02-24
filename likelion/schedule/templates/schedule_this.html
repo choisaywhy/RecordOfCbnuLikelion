@@ -1,99 +1,100 @@
-
 {% load static %}
 {% load staticfiles %}
 <html>
-    <haed>
-             
-        <!-- 합쳐지고 최소화된 최신 CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<haed>
 
-       <!-- 부가적인 테마 -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-        <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-        
-        <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-        <h3 class="logo"><a href="{% url 'main' %}"><img class="logo_img" src="{% static 'logo6.png' %}"></a>          충북대학교 x 멋쟁이사자처럼</h3>
-        <img class="lion_icon" src="{% static 'lion_icon.png' %}">
-        <h4 class="me">me</h4>
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 
-    </haed>
-    <body class="container-fluid">
-       
-       
-        
-        <hr/>
-       
-        <a  class="logout" href="{% url 'logout'%}">
-            <button type="button" class="btn btn-secondary">logout</button>
-        </a>
-       
-           
-       
-            {% comment %} 로그인/ 비로그인 시 뜨는 거 다르게 만든 것 수정중!
-             {% if user.is_authenticated %} <p>Welcome, {{ user.username }}. Thanks for logging in.</p> 
-            {% else %} 
-            <p>Welcome, new user. Please log in.</p> 
-            {% endif %} {% endcomment %}
+    <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-            <nav class="calendar_menu">
+    <h3 class="logo"><a href="{% url 'main' %}"><img class="logo_img" src="{% static 'logo6.png' %}"></a> 충북대학교 x
+        멋쟁이사자처럼</h3>
+    <img class="lion_icon" src="{% static 'lion_icon.png' %}">
+    <h4 class="me">me</h4>
 
-            <ul>
+</haed>
+
+<body class="container-fluid">
+
+
+
+    <hr />
+
+    <a class="logout" href="{% url 'logout'%}">
+        <button type="button" class="btn btn-secondary">logout</button>
+    </a>
+
+
+
+    {% comment %} 로그인/ 비로그인 시 뜨는 거 다르게 만든 것 수정중!
+    {% if user.is_authenticated %} <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+    {% else %}
+    <p>Welcome, new user. Please log in.</p>
+    {% endif %} {% endcomment %}
+
+    <nav class="calendar_menu">
+
+        <ul>
 
             <li><a href="{% url 'introduce' %}">introduce</a></li>
 
             <li><a href="#">Calendar</a>
 
+                <ul>
+
+                    <li><a href="{% url 'schedule_all' %}">All</a></li>
+
+
+                    <li><a href="{% url 'schedule_this' %}">This Month</a></li>
+
+
+            </li>
+
+        </ul>
+
+        </li>
+
+        <li><a href="#">Board</a>
+
             <ul>
 
-            <li><a href="{% url 'schedule_all' %}">All</a></li>
+                <li><a href="{% url 'board' 4%}">공지</a></li>
 
+                <li><a href="{% url 'board' 5%}">자유</a></li>
 
-            <li><a href="{% url 'schedule_this' %}">This Month</a></li>
-            
-
-            </li>
+                <li><a href="{% url 'board' 6%}">과제</a></li>
 
             </ul>
 
-            </li>
+        </li>
 
-            <li><a href="#">Board</a>
+        <li><a href="{% url 'member'%}">Member</a></li>
 
-            <ul>
+        </ul>
 
-            <li><a href= "{% url 'board' 4%}">공지</a></li>
+    </nav>
+    {% comment %} ================calendar=========== {% endcomment %}
 
-            <li><a href="{% url 'board' 5%}">자유</a></li>
-
-            <li><a href="{% url 'board' 6%}">과제</a></li>
-
-            </ul>
-
-            </li>
-
-            <li><a href="{% url 'member'%}">Member</a></li>
-
-            </ul>
-
-            </nav>
-        {% comment %} ================calendar=========== {% endcomment %}
-
-            <div class="container">
-            <div class="calendar_back">
-                <div class="month"> 
+    <div class="container">
+        <div class="calendar_back">
+            <div class="month">
                 <ul>
                     <li class="prev"><a>&#10094;</a></li>
                     <li class="next"><a>&#10095;</a></li>
                     <li> March<br><span style="font-size:18px">2019</span></li>
                 </ul>
-                </div>
+            </div>
 
-                <ul class="weekdays">
+            <ul class="weekdays">
                 <li>Mo</li>
                 <li>Tu</li>
                 <li>We</li>
@@ -101,9 +102,9 @@
                 <li>Fr</li>
                 <li>Sa</li>
                 <li>Su</li>
-                </ul>
+            </ul>
 
-                <ul class="days">
+            <ul class="days">
                 <li> </li>
                 <li> </li>
                 <li> </li>
@@ -162,22 +163,22 @@
                 <li> </li>
                 <li> </li>
                 <li> </li>
-            
-                </ul>
-            </div>
-            </div>
-        </div>    
-       
-        <br>
-        <br>
-        <br>
 
-        
-    </body>
+            </ul>
+        </div>
+    </div>
+    </div>
 
-    <footer>
-        MAKE
-    
-    </footer>
+    <br>
+    <br>
+    <br>
+
+
+</body>
+
+<footer>
+    MAKE
+
+</footer>
+
 </html>
-

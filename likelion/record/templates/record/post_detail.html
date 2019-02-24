@@ -6,101 +6,111 @@
     <div class="container">
         <br><br><br>
 
-        <div class = "post" style="color:white">
-        
-            <div class = "left" style="margin-left:-10px;">
+        <div class="post" style="color:white">
+
+            <div class="left" style="margin-left:-10px;">
                 <br>
                 <p>Category : {{ post.category }}</p>
                 <h3 style="font-size : 40px;">{{ post.title }}</h3>
                 {% if post.file%}
-            <p>File : <a id="id_uploaded_file" href="{{ post.file.url }}" download>{{ post.file }}</a></p>
-                <div style="float:left;"><img src = "{{post.file.url}}" alt="" style=" max-width:400px; max-height:auto;" data-toggle="modal" data-target="#exampleModal"><br><center><p>(이미지를 클릭하면 원본을 볼 수 있습니다.)</p></center></div>
-                <div style="float:left; margin-left:15px;"><p style="display : inline-block; width: 300px; overflow:auto; height:300px;">{{ post.text }}</p></div>
-            
+                <p>File : <a id="id_uploaded_file" href="{{ post.file.url }}" download>{{ post.file }}</a></p>
+                <div style="float:left;"><img src="{{post.file.url}}" alt="" style=" max-width:400px; max-height:auto;"
+                        data-toggle="modal" data-target="#exampleModal"><br>
+                    <center>
+                        <p>(이미지를 클릭하면 원본을 볼 수 있습니다.)</p>
+                    </center>
+                </div>
+                <div style="float:left; margin-left:15px;">
+                    <p style="display : inline-block; width: 300px; overflow:auto; height:300px;">{{ post.text }}</p>
+                </div>
+
                 {% else %}
                 <p style="display : inline-block; width: 500px; overflow:auto; height:300px;">{{ post.text }}</p>
                 {% endif %}
-                
+
             </div>
 
-            <div class = "right" style="margin-left : 100px;">
+            <div class="right" style="margin-left : 100px;">
                 <br><br><br>
                 <p> 작성자 : {{post.name_id}}</p>
                 <p> 작성일 : {{ post.created_at }}</p>
                 <p> 수정일 : {{ post.updated_at }}</p>
-                
-                <br><br><br> 
-                <div style = "margin-left : 100px;">
-                <a href="{% url 'main' %}">Back</a>
-                <a href="{% url 'post_edit' post.id %}">Edit</a>
-                <a href="{% url 'post_delete' post.id %}" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</a>
+
+                <br><br><br>
+                <div style="margin-left : 100px;">
+                    <a href="{% url 'main' %}">Back</a>
+                    <a href="{% url 'post_edit' post.id %}">Edit</a>
+                    <a href="{% url 'post_delete' post.id %}" onclick="return confirm('정말로 삭제하시겠습니까?');">Delete</a>
                 </div>
             </div>
         </div>
 
         <br style="line-height:400px">
 
-        <hr> 
+        <hr>
 
-            <p style="color : white;">댓글 {{ post.comment_set.count }}개</p>
+        <p style="color : white;">댓글 {{ post.comment_set.count }}개</p>
 
-            <div class="container" style="background-color: rgba( 255, 255, 255, 0.5 );">
-                {% for comment in post.comment_set.all%}
-                    <div class="container">
-                        <br>
-                        <p><strong>{{comment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{comment.created_at}}</p>
-                        <p>&nbsp{{comment.text}}</p>
-                        <a href="{% url 'comment_delete' post.id comment.id  %}" class = "btn btn-warning float-right" role="button">Delete</a>
-                    </div>
-                    {% for recomment in comment.recomment_set.all%}
-                        <div class="container">
-                            <br>
-                            <p>ㄴ<strong>{{recomment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{recomment.created_at}}</p>
-                            <p>&nbsp{{recomment.text}}</p>
-                            <a href="{% url 'recomment_delete' post.id comment.id recomment.id %}" class = "btn btn-warning float-right" role="button">Delete</a>
-                        </div>
-                    {% endfor %}
-                    <br>
-                    <br>
+        <div class="container" style="background-color: rgba( 255, 255, 255, 0.5 );">
+            {% for comment in post.comment_set.all%}
+            <div class="container">
+                <br>
+                <p><strong>{{comment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{comment.created_at}}</p>
+                <p>&nbsp{{comment.text}}</p>
+                <a href="{% url 'comment_delete' post.id comment.id  %}" class="btn btn-warning float-right"
+                    role="button">Delete</a>
+            </div>
+            {% for recomment in comment.recomment_set.all%}
+            <div class="container">
+                <br>
+                <p>ㄴ<strong>{{recomment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{recomment.created_at}}</p>
+                <p>&nbsp{{recomment.text}}</p>
+                <a href="{% url 'recomment_delete' post.id comment.id recomment.id %}"
+                    class="btn btn-warning float-right" role="button">Delete</a>
+            </div>
+            {% endfor %}
+            <br>
+            <br>
 
-                    <button data-toggle="collapse" data-target="#recomment" class = "btn btn-info">Recomment</button>
-                    
-                    <div id="recomment" class="collapse border-0" style="background-color:transparent">
-                        <div class="card card-body border-0" style="background-color:transparent">
-                            <form action='{% url 'recomment_new' post.id comment.id %}' method = 'post'>
-                                {% csrf_token %}
-                                    <table margin = >
-                                        {{ form.as_p }}
-                                        <input type='submit' value='Save' class = "btn btn-info float-right">
-                                    </table>
-                                    
-                            </form>
+            <button data-toggle="collapse" data-target="#recomment" class="btn btn-info">Recomment</button>
 
-                        </div>
-                    </div>
-                {% empty %}
-                    <p>Comment here</p>
-                {% endfor %}
+            <div id="recomment" class="collapse border-0" style="background-color:transparent">
+                <div class="card card-body border-0" style="background-color:transparent">
+                    <form action='{% url 'recomment_new' post.id comment.id %}' method='post'>
+                        {% csrf_token %}
+                        <table margin=>
+                            {{ form.as_p }}
+                            <input type='submit' value='Save' class="btn btn-info float-right">
+                        </table>
+
+                    </form>
+
+                </div>
+            </div>
+            {% empty %}
+            <p>Comment here</p>
+            {% endfor %}
         </div>
 
-            <br>
-            <br>
-            <br>
-            <hr>
-            <br>
-            <br>
-            <p>댓글 작성</p>
-            <form action='{% url 'comment_new' post.id %}' method = 'post'>
-                {% csrf_token %}
-                <table margin = >
-                    {{ form.as_p }}
-                    <input type='submit' value='Save' class = "btn btn-info float-right">
-                </table>
-            </form>
+        <br>
+        <br>
+        <br>
+        <hr>
+        <br>
+        <br>
+        <p>댓글 작성</p>
+        <form action='{% url 'comment_new' post.id %}' method='post'>
+            {% csrf_token %}
+            <table margin=>
+                {{ form.as_p }}
+                <input type='submit' value='Save' class="btn btn-info float-right">
+            </table>
+        </form>
 
-            {% if post.file %}
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="overflow : scroll;">
-                <!-- <div class="modal-dialog modal-lg" role="document">
+        {% if post.file %}
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true" style="overflow : scroll;">
+            <!-- <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel" style="font-size:25px; font-weight:bolder;">{{post.file}}</h5>
@@ -108,17 +118,17 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     </div> -->
-            
-                    <div class="modal-body">
-                        <img src = "{{post.file.url}}" alt="">
-                    </div>
-                    <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-                    </div>
-                <!-- </div> -->
-                
-                </div>
-            {% endif %}
+
+            <div class="modal-body">
+                <img src="{{post.file.url}}" alt="">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+            </div>
+            <!-- </div> -->
+
+        </div>
+        {% endif %}
     </div>
 </div>
-{% endblock %} 
+{% endblock %}

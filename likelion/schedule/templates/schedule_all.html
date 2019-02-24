@@ -4,26 +4,26 @@
 <div class="mini_background">
     <div class="container">
         <div class="col-md-6">
-        <br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br>
             <table class="table" style="color:white;">
                 <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Schedule</th>
-                            <th>Start</th>
-                            <th>End</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for schedule in schedules %}
-                        <tr>
-                            <td>{{ schedule.day }}</td>
-                            <td>{{ schedule.notes }}</td>
-                            <td>{{ schedule.start_time }}</td>
-                            <td>{{ schedule.end_time }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
+                    <tr>
+                        <th>Date</th>
+                        <th>Schedule</th>
+                        <th>Start</th>
+                        <th>End</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for schedule in schedules %}
+                    <tr>
+                        <td>{{ schedule.day }}</td>
+                        <td>{{ schedule.notes }}</td>
+                        <td>{{ schedule.start_time }}</td>
+                        <td>{{ schedule.end_time }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
 
@@ -35,14 +35,13 @@
             <br>
             <form action="" method="post">
                 {% csrf_token %}
-            <table>
-                {{ form }}
-            </table>
-            <input type="submit" value="SAVE">
+                <table>
+                    {{ form }}
+                </table>
+                <input type="submit" value="SAVE">
             </form>
         </div>
     </div>
 </div>
-    
-{% endblock %}
 
+{% endblock %}

@@ -7,13 +7,13 @@
                 <h2><strong>{{ category.name }}</strong></h2>
             </center>
             <br>
-            <a href="{% url 'post_new' %}" class = "btn btn-info float-right" role="button"> New </a>
+            <a href="{% url 'post_new' %}" class="btn btn-info float-right" role="button"> New </a>
             <br>
             <br>
             <br>
             <br>
 
-            
+
             <table class="table" style="color:white">
                 <thead>
                     <tr>
@@ -25,59 +25,53 @@
                 </thead>
                 <tbody>
 
-                {% for post in posts %}
-                    {% if post.category == category%}    
-                        <tr>
-                            <td>{{ post.category }}</td>
-                            {% comment %} <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }} [{{ post.count_comments }}]</a></td> {% endcomment %}
-                            <td>{{ post.name_id }}</td>
-                            <td>{{ post.created_at }}</td>
-                        </tr>
+                    {% for post in posts %}
+                    {% if post.category == category%}
+                    <tr>
+                        <td>{{ post.category }}</td>
+                        {% comment %} <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }}
+                                [{{ post.count_comments }}]</a></td> {% endcomment %}
+                        <td>{{ post.name_id }}</td>
+                        <td>{{ post.created_at }}</td>
+                    </tr>
                     {% endif %}
-                {% endfor %}
+                    {% endfor %}
                 </tbody>
             </table>
 
-                    <nav aria-label="Page navigation example">
-                    {% comment %} 페이지네이션 {% endcomment %}
-                        <ul class="pagination">
-                            {% if posts.has_previous %}
-                                <li>
-                                    <a href="?page={{ posts.previous_page_number }}">
-                                        <span><<</span>
-                                    </a>
-                                </li>
-                            {% else %}
-                                <li class="disabled">
+            <nav aria-label="Page navigation example">
+                {% comment %} 페이지네이션 {% endcomment %}
+                <ul class="pagination">
+                    {% if posts.has_previous %}
+                    <li>
+                        <a href="?page={{ posts.previous_page_number }}">
+                            <span>
+                                <<</span> </a> </li> {% else %} <li class="disabled">
                                     <a href="#">
-                                        <span><<</span>
-                                    </a>
-                                </li>
-                            {% endif %}
+                                        <span>
+                                            <<</span> </a> </li> {% endif %} {% for page in paginator.page_range %} <li
+                                                {% if posts.number == page %}class="active" {% endif %}>
+                                                <a href="?page={{ page }}">
+                                                    <span>{{ page }}</span>
+                                                </a>
+                    </li>
+                    {% endfor %}
 
-                            {% for page in paginator.page_range %}
-                                <li {% if posts.number == page %}class="active"{% endif %}>
-                                    <a href="?page={{ page }}">
-                                        <span>{{ page }}</span>
-                                    </a>
-                                </li>
-                            {% endfor %}
-
-                            {% if posts.has_next %}
-                                <li>
-                                    <a href="?page={{ posts.next_page_number }}">
-                                        <span>>></span>
-                                    </a>
-                                </li>
-                            {% else %}
-                                <li class="disabled">
-                                    <a href="#">
-                                        <span>>></span>
-                                    </a>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </nav>
+                    {% if posts.has_next %}
+                    <li>
+                        <a href="?page={{ posts.next_page_number }}">
+                            <span>>></span>
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="disabled">
+                        <a href="#">
+                            <span>>></span>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
