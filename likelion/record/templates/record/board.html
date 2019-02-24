@@ -29,8 +29,8 @@
                     {% if post.category == category%}
                     <tr>
                         <td>{{ post.category }}</td>
-                        {% comment %} <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }}
-                                [{{ post.count_comments }}]</a></td> {% endcomment %}
+                        <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }}
+                                [{{ post.count_comments }}]</a></td>
                         <td>{{ post.name_id }}</td>
                         <td>{{ post.created_at }}</td>
                     </tr>

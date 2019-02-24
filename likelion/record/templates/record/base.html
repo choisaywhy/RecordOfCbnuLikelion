@@ -46,6 +46,10 @@
         body {
             color: white;
         }
+
+        .post {
+            font-family: 'Sarabun', 'NanumBarunGothic', sans-serif;
+        }
     </style>
     <link href="cssfile.css" media="screen and (min-width: 512px) and (max-width: 1024px)" rel="stylesheet">
     <!--화면 조정-->
@@ -58,9 +62,7 @@
 </head>
 
 <body class="container-fluid">
-    {% comment %}
-    <hr /> {% endcomment %}
-    <h4 class="me">{{post.name_id}}</h4>
+
     <a class="logout" href="{% url 'logout'%}">
         <button type="button" class="btn btn-secondary">logout</button>
     </a>

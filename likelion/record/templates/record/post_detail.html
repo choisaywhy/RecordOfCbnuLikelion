@@ -53,42 +53,42 @@
 
         <div class="container" style="background-color: rgba( 255, 255, 255, 0.5 );">
             {% for comment in post.comment_set.all%}
-            <div class="container">
-                <br>
-                <p><strong>{{comment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{comment.created_at}}</p>
-                <p>&nbsp{{comment.text}}</p>
-                <a href="{% url 'comment_delete' post.id comment.id  %}" class="btn btn-warning float-right"
-                    role="button">Delete</a>
-            </div>
-            {% for recomment in comment.recomment_set.all%}
-            <div class="container">
-                <br>
-                <p>ㄴ<strong>{{recomment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{recomment.created_at}}</p>
-                <p>&nbsp{{recomment.text}}</p>
-                <a href="{% url 'recomment_delete' post.id comment.id recomment.id %}"
-                    class="btn btn-warning float-right" role="button">Delete</a>
-            </div>
-            {% endfor %}
-            <br>
-            <br>
-
-            <button data-toggle="collapse" data-target="#recomment" class="btn btn-info">Recomment</button>
-
-            <div id="recomment" class="collapse border-0" style="background-color:transparent">
-                <div class="card card-body border-0" style="background-color:transparent">
-                    <form action='{% url 'recomment_new' post.id comment.id %}' method='post'>
-                        {% csrf_token %}
-                        <table margin=>
-                            {{ form.as_p }}
-                            <input type='submit' value='Save' class="btn btn-info float-right">
-                        </table>
-
-                    </form>
-
+                <div class="container">
+                    <br>
+                    <p><strong>{{comment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{comment.created_at}}</p>
+                    <p>&nbsp{{comment.text}}</p>
+                    <a href="{% url 'comment_delete' post.id comment.id  %}" class="btn btn-warning float-right"
+                        role="button">Delete</a>
                 </div>
-            </div>
-            {% empty %}
-            <p>Comment here</p>
+                    {% for recomment in comment.recomment_set.all%}
+                    <div class="container">
+                        <br>
+                        <p>ㄴ<strong>{{recomment.name_id}}</strong>&nbsp&nbsp&nbsp&nbsp{{recomment.created_at}}</p>
+                        <p>&nbsp{{recomment.text}}</p>
+                        <a href="{% url 'recomment_delete' post.id comment.id recomment.id %}"
+                            class="btn btn-warning float-right" role="button">Delete</a>
+                    </div>
+                    {% endfor %}
+                <br>
+                <br>
+
+                <button data-toggle="collapse" data-target="#recomment" class="btn btn-info">Recomment</button>
+
+                <div id="recomment" class="collapse border-0" style="background-color:transparent">
+                    <div class="card card-body border-0" style="background-color:transparent">
+                        <form action='{% url 'recomment_new' post.id comment.id %}' method='post'>
+                            {% csrf_token %}
+                            <table margin=>
+                                {{ form.as_p }}
+                                <input type='submit' value='Save' class="btn btn-info float-right">
+                            </table>
+
+                        </form>
+
+                    </div>
+                </div>
+                {% empty %}
+                <p>Comment here</p>
             {% endfor %}
         </div>
 

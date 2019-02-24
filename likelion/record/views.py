@@ -32,17 +32,21 @@ def post_detail(request, post_id):
 def main(request) :
     post_all = Post.objects.all().order_by('-created_at')
     category_all = Category.objects.all()
-    page_numbers_range = 12
+    page_numbers_range = 8
     paginator = Paginator(post_all,page_numbers_range)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
+
     schedule_all = Event.objects.all()
+    schedule_numbers_range = 8
+    paginator_schedule = Paginator(schedule_all, schedule_numbers_range)
+
     return render(request, 'record/main.html',{'post_all':post_all,'category_all':category_all,'posts':posts, 'schedules':schedule_all})
 
 @login_required
 def board(request, category_id):
     category = get_object_or_404(Category, id=category_id)
-    post_all = Post.objects.all().order_by('-created_at')
+    post_all = Post.objects.filter(category_id=category).order_by('-created_at')
     page_numbers_range = 8
     # 한 페이지에 나올 게시글 수
     paginator = Paginator(post_all,page_numbers_range)
