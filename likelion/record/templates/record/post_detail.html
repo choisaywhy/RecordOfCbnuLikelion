@@ -77,7 +77,7 @@
                     <div class="card card-body border-0" style="background-color:transparent">
                         <form action='{% url 'recomment_new' post.id comment.id %}' method='post'>
                             {% csrf_token %}
-                            <table margin=>
+                            <table margin>
                                 {{ form.as_p }}
                                 <input type='submit' value='Save' class="btn btn-info float-right">
                             </table>
@@ -98,7 +98,7 @@
         <p>댓글 작성</p>
         <form action='{% url 'comment_new' post.id %}' method='post'>
             {% csrf_token %}
-            <table margin=>
+            <table margin>
                 {{ form.as_p }}
                 <input type='submit' value='Save' class="btn btn-info float-right">
             </table>

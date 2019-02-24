@@ -141,6 +141,7 @@ def recomment_new(request, post_id, comment_id):
     form = RecommentForm(request.POST)
     if form.is_valid():
         recomment = form.save(commit=False)
+        recomment.name_id = User.objects.get(username = request.user.username) 
         recomment.comment = comment
         comment.post = post
         recomment.save()
@@ -149,9 +150,19 @@ def recomment_new(request, post_id, comment_id):
 def recomment_delete(request, post_id, comment_id, recomment_id):
     post = get_object_or_404(Post, id=post_id)
     recomment = get_object_or_404(Recomment, id=recomment_id)
-    recomment.delete()
-    # return redirect(recomment.comment.post)
-    return redirect(post)
+    if recomment.name_id == User.objects.get(username = request.user.get_username()):
+        recomment.delete()
+        return redirect(recomment.comment.post)
+    else:
+        return render(request, 'record/warning.html')
+
+
+# def recomment_delete(request, post_id, comment_id, recomment_id):
+#     post = get_object_or_404(Post, id=post_id)
+#     recomment = get_object_or_404(Recomment, id=recomment_id)
+#     recomment.delete()
+#     # return redirect(recomment.comment.post)
+#     return redirect(post)
 
 
 @login_required
