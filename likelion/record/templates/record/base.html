@@ -1,129 +1,142 @@
 {% load static %}
 {% load staticfiles %}
 <html>
-    <head>
-            
-        <link href="https://fonts.googleapis.com/css?family=Sarabun" rel="stylesheet">
-        <!-- 합쳐지고 최소화된 최신 CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-       <!-- 부가적인 테마 -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-        
-        <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-         <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-       
+<head>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-        <h3 class="logo" style="color:white"><a href="{% url 'main' %}"><img class="logo_img" src="{% static 'logo6.png' %}"></a>          충북대학교 x 멋쟁이사자처럼</h3>
-        <img class="lion_icon" src="{% static 'lion_icon.png' %}">
-        <h4 class="me">me</h4>
-        <style type="text/css">
-        
-        body 
-        { color:white; }
+    <link href="https://fonts.googleapis.com/css?family=Sarabun" rel="stylesheet">
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 
-        </style>
-        <link href="cssfile.css" media="screen and (min-width: 512px) and (max-width: 1024px)" rel="stylesheet"> <!--화면 조정-->
-        <style type="text/css" media="screen and (min-width: 512px) and (max-width:1024px)">  
-         @import url(cssfile.css) screen and (min-width: 152px) and (max-width: 1024px);
-        </style> 
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <h3 class="logo" style="color:white"><a href="{% url 'main' %}"><img class="logo_img"
+                src="{% static 'logo6.png' %}"></a> 충북대학교 x 멋쟁이사자처럼</h3>
+    <img class="lion_icon" src="{% static 'lion_icon.png' %}">
+    <h4 class="me">
+        {{user.username}}
+    </h4>
+    <style type="text/css">
+        body {
+            color: white;
+        }
+    </style>
+    <link href="cssfile.css" media="screen and (min-width: 512px) and (max-width: 1024px)" rel="stylesheet">
+    <!--화면 조정-->
+    <style type="text/css" media="screen and (min-width: 512px) and (max-width:1024px)">
+        @import url(cssfile.css) screen and (min-width: 152px) and (max-width: 1024px);
+    </style>
 
-    </head>
 
-    <body class="container-fluid">
-        {% comment %} <hr/> {% endcomment %}
-        <h4 class="me">{{post.name_id}}</h4>
-        <a  class="logout" href="{% url 'logout'%}">
-            <button type="button" class="btn btn-secondary">logout</button>
-        </a>
+
+</head>
+
+<body class="container-fluid">
+    {% comment %}
+    <hr /> {% endcomment %}
+    <h4 class="me">{{post.name_id}}</h4>
+    <a class="logout" href="{% url 'logout'%}">
+        <button type="button" class="btn btn-secondary">logout</button>
+    </a>
     </head>
 
     <body class="container-fluid">
         <hr>
-        
-               
-            {% comment %} 로그인/ 비로그인 시 뜨는 거 다르게 만든 것 수정중!
-             {% if user.is_authenticated %} <p>Welcome, {{ user.username }}. Thanks for logging in.</p> 
-            {% else %} 
-            <p>Welcome, new user. Please log in.</p> 
-            {% endif %} {% endcomment %}
+
+
+        {% comment %} 로그인/ 비로그인 시 뜨는 거 다르게 만든 것 수정중!
+        {% if user.is_authenticated %} <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+        {% else %}
+        <p>Welcome, new user. Please log in.</p>
+        {% endif %} {% endcomment %}
 
         {% comment %} 메뉴============================ {% endcomment %}
         <div class="post" style="font-size:20px;">
-        <nav class="calendar_menu">
+            <nav class="calendar_menu">
 
-            <ul>
+                <ul>
 
-            <li><a href="{% url 'introduce' %}">Introduce</a></li>
+                    <li><a href="{% url 'introduce' %}">Introduce</a></li>
 
-            <li><a href="#">Calendar</a>
+                    <li><a href="#">Calendar</a>
 
-            <ul>
+                        <ul>
 
-            <li><a href="{% url 'schedule_all' %}">All</a></li>
+                            <li><a href="{% url 'schedule_all' %}">All</a></li>
 
 
-            <li><a href="{% url 'schedule_this' %}">This Month</a></li>
-            
+                            <li><a href="{% url 'schedule_this' %}">This Month</a></li>
 
-            </li>
 
-            </ul>
+                    </li>
 
-            </li>
+                </ul>
 
-            <li><a href="#">Board</a>
+                </li>
 
-            <ul>
+                <li><a href="#">Board</a>
 
-            <li><a href= "{% url 'board' 4%}">공지</a></li>
+                    <ul>
 
-            <li><a href="{% url 'board' 5%}">자유</a></li>
+                        <li><a href="{% url 'board' 4%}">공지</a></li>
 
-            <li><a href="{% url 'board' 6%}">과제</a></li>
+                        <li><a href="{% url 'board' 5%}">자유</a></li>
 
-            </ul>
+                        <li><a href="{% url 'board' 6%}">과제</a></li>
 
-            </li>
+                    </ul>
 
-            <li><a href="{% url 'member'%}">Member</a></li>
+                </li>
 
-            </ul>
+                <li><a href="{% url 'member'%}">Member</a></li>
 
-        </nav>
+                </ul>
+
+            </nav>
         </div>
         {% comment %} ============================== {% endcomment %}
-      
-       
-                {% block content%}
-                {% endblock %}
- 
+
+
+        {% block content%}
+        {% endblock %}
+
         <br>
         <br>
         <br>
     </body>
 
     <footer>
-    <br>
-    <br>
+        <br>
+        <br>
         MAKE
-    <br>
-    <br>
+        <br>
+        <br>
     </footer>
+
 </html>

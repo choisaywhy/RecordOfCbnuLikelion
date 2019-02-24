@@ -29,7 +29,7 @@
                     {% if post.category == category%}    
                         <tr>
                             <td>{{ post.category }}</td>
-                            <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }} [{{ post.count_comments }}]</a></td>
+                            {% comment %} <td><a href="{% url 'post_detail' post.id  %}">{{ post.title }} [{{ post.count_comments }}]</a></td> {% endcomment %}
                             <td>{{ post.name_id }}</td>
                             <td>{{ post.created_at }}</td>
                         </tr>
