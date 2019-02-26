@@ -3,6 +3,7 @@
 <html>
 
 <head>
+    <title>멋쟁이사자처럼X충북대학교 흔적</title>
 
     <link href="https://fonts.googleapis.com/css?family=Sarabun" rel="stylesheet">
     <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -36,15 +37,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <h3 class="logo" style="color:white"><a href="{% url 'main' %}"><img class="logo_img"
-                src="{% static 'logo6.png' %}"></a> 충북대학교 x 멋쟁이사자처럼</h3>
-    <img class="lion_icon" src="{% static 'lion_icon.png' %}">
-    <h4 class="me">
-        {{user.username}}
-    </h4>
-
-
-
     
     <style type="text/css">
         body {
@@ -60,22 +52,36 @@
     <style type="text/css" media="screen and (min-width: 512px) and (max-width:1024px)">
         @import url(cssfile.css) screen and (min-width: 152px) and (max-width: 1024px);
     </style>
-    
-
+        
 
 
 </head>
 
 <body class="container-fluid">
 
-    <a class="logout" href="{% url 'logout'%}">
-        <button type="button" class="btn btn-secondary">logout</button>
-    </a>
-    </head>
+    <header style="height: 60px;">
 
-    <body class="container-fluid">
-        <hr>
+        <a href="{% url 'main' %}">
+        <h1 class="logo" style="color:white;font-size:28px;padding-left: 30px;padding-top:20px"><a href="{% url 'main' %}"><img class="logo_img"
+            src="{% static 'logo6.png' %}"></a> 충북대학교 x 멋쟁이사자처럼</h1>
+        
+        <img class="lion_icon" src="{% static 'lion_icon.png' %}" style="margin-right: 45px;margin-top:20px">
+        <div class="dropdown" style="float:right;">
+            <button class="btn dropdown-toggle" style="margin-right: 45px;" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{user.username}}
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <p class="dropdown-item">{{user.email}}</p>
+            <p class="dropdown-item">{{user.last_name}}{{user.first_name}}</p>
+            <a class="dropdown-item" href="{% url 'logout'%}">logout</a>
+            </div>
+        </div>
+    </header>
 
+       <br>
+       <br>
+       <br>
+       <hr>
 
         {% comment %} 로그인/ 비로그인 시 뜨는 거 다르게 만든 것 수정중!
         {% if user.is_authenticated %} <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
@@ -137,13 +143,13 @@
         <br>
         <br>
         <br>
-    </body>
+</body>
 
-    <footer>
+<footer>
         <br>
         <br>
         made by 최세화 / 신은지 / 박태미<br>in 멋쟁이 사자처럼 at 충북대학교 <br>
-        <small>first start 2019/02/24</small>
+        <small>start 2019/02/24</small>
 
         <br>
         <br>

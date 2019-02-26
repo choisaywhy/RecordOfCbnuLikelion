@@ -6,13 +6,13 @@
 <div class="mini_background" style="overflow :auto;">
     <div class="container">
         <div class="post">
-            <h1 style="font-size : 40px; color:white;">[ Main ]</h1>
+            {% comment %} <h1 style="font-size : 40px; color:white;">[ Main ]</h1> {% endcomment %}
             <div class="col-md-6">
                 {% comment %}
                 {% for category in category_all %}
                 <h3><a href="{% url 'board' category.id %}">{{ category.name }}</h3>
                 {% endcomment %}
-               
+               <br><br><br>
                 <table class="table" style="color:white">
                 <h3>NEW</h3>
                     <thead>
@@ -46,7 +46,7 @@
                 <br>
                 
             </div>
-                
+            <br><br><br>
             <div class="col-md-6">
                 <h3>SCHEDULE</h3>
                 <table class="table"  style="color:white">
